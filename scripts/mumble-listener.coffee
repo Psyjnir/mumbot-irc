@@ -28,6 +28,7 @@ module.exports = (robot) ->
     
     allRooms = getAllRooms robot
     
+    i = 0
     while i < allRooms.length
       robot.messageRoom allRooms[i], "#{userName} hopped on Mumble!"
       i++
