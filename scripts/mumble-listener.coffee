@@ -22,13 +22,17 @@
 #   atmos, technicalpickles
 
 module.exports = (robot) ->
-  robot.router.get '/user/:name/joined/:room', (req, res) ->
+  robot.router.get '/user/:name/joined/:channel', (req, res) ->
     userName = req.params.name
-    room = req.params.room
+    mumbleChannel = req.params.channel
     
-    robot.messageRoom "#{userName} hopped on Mumble!"
+    allRooms = getAllRooms robot
     
-    res.end "Noted!"
+    while i < allRooms.length
+      robot.messageRoom allRooms[i], "#{userName} hopped on Mumble!"
+      i++
+    
+    res.end "JOIN NOTED"
 
 
 # Ugly hack to get all hubot’s rooms,
