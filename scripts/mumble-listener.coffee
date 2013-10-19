@@ -27,3 +27,5 @@ module.exports = (robot) ->
     room = req.params.room
     
     robot.messageRoom "#{userName} hopped on Mumble!"
+    
+    res.end "OK"
