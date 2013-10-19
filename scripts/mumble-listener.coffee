@@ -13,11 +13,6 @@
 # Commands:
 #   hubot <keyword> tweet - Returns a link to a tweet about <keyword>
 #
-# Notes:
-#   There's an outstanding issue on AvianFlu/ntwitter#110 for search and the v1.1 API.
-#   sebhildebrandt is a fork that is working, so we recommend that for now. This
-#   can be removed after the issue is fixed and a new release cut, along with updating the dependency
-#
 # Author:
 #   atmos, technicalpickles
 
@@ -26,11 +21,17 @@ module.exports = (robot) ->
     userName = req.params.name
     mumbleChannel = req.params.channel
     
+    console.log "User: #{userName} to Channel: #{mumbleChannel}"
+    
     allRooms = getAllRooms robot
     
+    if mumbleChannel?
+      message = "#{userName} moved into #{mumbleChannel}"
+    else
+      message = "#{userName} hopped on Mumble!"
     i = 0
     while i < allRooms.length
-      robot.messageRoom allRooms[i], "#{userName} hopped on Mumble!"
+      robot.messageRoom allRooms[i], message
       i++
     
     res.end "JOIN NOTED"
