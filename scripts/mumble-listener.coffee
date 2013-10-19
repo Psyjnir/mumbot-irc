@@ -28,4 +28,18 @@ module.exports = (robot) ->
     
     robot.messageRoom "#{userName} hopped on Mumble!"
     
-    res.end "OK"
+    res.end "Noted!"
+
+
+# Ugly hack to get all hubot’s rooms,
+# pending an official and cross-adapters API
+getAllRooms = (robot) ->
+  
+  # With the IRC adapter, rooms are located
+  # in robot.adapter.bot.opt.channels
+  adapter = robot.adapter
+  return adapter.bot.opt.channels  if adapter and adapter.bot and adapter.bot.opt and adapter.bot.opt.channels
+  
+  # Search in env vars
+  for i of process.env
+    return process.env[i].split(",")  if /^HUBOT_.+_ROOMS/i.exec(i) isnt null
