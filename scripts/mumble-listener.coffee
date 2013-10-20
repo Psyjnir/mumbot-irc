@@ -35,7 +35,20 @@ module.exports = (robot) ->
       i++
     
     res.end "JOIN NOTED"
-
+    
+  robot.hear /mumble me/i, (msg) ->
+    msg.http("#{process.env.HUBOT_MUMBLE_PARTNER_URL}/status/userList")
+      .get() (err, res, body) ->
+        activeUsers = JSON.parse(body)
+        if activeUsers.length isnt 0
+          message = "Mumblers: "
+          message.append("#{key} (#{value}), ") for key, value of activeUsers
+          message = 
+        else
+          message = "No one on Mumble!"
+        
+        msg.send message
+        
 
 # Ugly hack to get all hubot’s rooms,
 # pending an official and cross-adapters API
