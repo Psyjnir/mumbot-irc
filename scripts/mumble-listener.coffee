@@ -17,6 +17,7 @@
 #   atmos, technicalpickles
 
 module.exports = (robot) ->
+  # Endpoint for user channel change notifications
   robot.router.get '/user/:name/joined/:channel', (req, res) ->
     userName = req.params.name
     mumbleChannel = req.params.channel
@@ -29,26 +30,68 @@ module.exports = (robot) ->
       message = "#{userName} moved into #{mumbleChannel}"
     else
       message = "#{userName} hopped on Mumble!"
+    
     i = 0
     while i < allRooms.length
       robot.messageRoom allRooms[i], message
       i++
     
     res.end "JOIN NOTED"
-    
-  robot.hear /mumble me/i, (msg) ->
+  
+  # Ping mumble partner to get userlist
+  robot.hear /(mumble me$)|(who'?s online\?)|(anyone (online)|(on mumble)\??)/i, (msg) ->
     msg.http("#{process.env.HUBOT_MUMBLE_PARTNER_URL}/mumble/userList")
       .get() (err, res, body) ->
-        activeUsers = JSON.parse(body)
-        if activeUsers.length isnt 0
+        if err
+          msg.send "Can't connect right now :( #{err}"
+          return
+        
+        payload = JSON.parse(body)
+        if payload.channel?
+          console.log "Got a specific channel, did not request!"
+          return
+          
+        if payload.users isnt 0
           message = "Online: "
           console.log activeUsers
-          for key, value of activeUsers
-            unless value is robot.name
-              message = message + "#{key} (#{value}), "
+          for user of activeUsers
+            unless user.name is robot.name
+              message = message + "#{user.name} (#{user.room}), "
           message = message.substring(0, message.length - 2)
         else
           message = "No one on Mumble!"
+        
+        msg.send message
+    
+  robot.hear /(?:mumble me (.+))|(?:(?:anyone|who'?s) (?:in|on) (.+)\?)/i, (msg) ->
+    channel = msg.match[1] or msg.match[2]
+    uriChannel = encodeURIComponent channel
+    if not channel?
+      msg.send "Not a valid channel :("
+      return
+    
+    msg.http("#{process.env.HUBOT_MUMBLE_PARTNER_URL}/mumble/userList/#{uriChannel}")
+      .get() (err, res, body) ->
+        if err
+          msg.send "Sorry, #{msg.envelope.user.name}, I ran into a problem :( (#{err})"
+          return
+        
+        payload = JSON.parse(body)
+        if not payload.channel?
+          console.log "Error: specific channel not returned!"
+          msg.send "Sorry, #{msg.envelope.user.name}, I ran into a problem :( (Did didn't get info about #{channel})"
+          return
+          
+        if payload.users isnt 0
+          users = payload.users
+          message = "Online in #{users[1].room}: "
+          console.log users
+          for user of users
+            unless user.name is robot.name
+              message = message + "#{user.name}, "
+          message = message.substring(0, message.length - 2)
+        else
+          message = "No one in #{channel}!"
         
         msg.send message
         
