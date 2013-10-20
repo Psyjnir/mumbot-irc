@@ -43,7 +43,7 @@ module.exports = (robot) ->
         if activeUsers.length isnt 0
           message = "Mumblers: "
           message.append("#{key} (#{value}), ") for key, value of activeUsers
-          message = 
+          message = message.substring(0, message.length - 2)
         else
           message = "No one on Mumble!"
         
