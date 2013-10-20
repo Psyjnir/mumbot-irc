@@ -37,12 +37,15 @@ module.exports = (robot) ->
     res.end "JOIN NOTED"
     
   robot.hear /mumble me/i, (msg) ->
-    msg.http("#{process.env.HUBOT_MUMBLE_PARTNER_URL}/status/userList")
+    msg.http("#{process.env.HUBOT_MUMBLE_PARTNER_URL}/mumble/userList")
       .get() (err, res, body) ->
         activeUsers = JSON.parse(body)
         if activeUsers.length isnt 0
-          message = "Mumblers: "
-          message.append("#{key} (#{value}), ") for key, value of activeUsers
+          message = "Online: "
+          console.log activeUsers
+          for key, value of activeUsers
+            unless value is robot.name
+              message = message + "#{key} (#{value}), "
           message = message.substring(0, message.length - 2)
         else
           message = "No one on Mumble!"
