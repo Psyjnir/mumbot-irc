@@ -51,10 +51,10 @@ module.exports = (robot) ->
           console.log "Got a specific channel, did not request!"
           return
           
-        if payload.users isnt 0
+        if payload.users.length isnt 0
+          users = payload.users
           message = "Online: "
-          console.log activeUsers
-          for user of activeUsers
+          for key, user of users
             unless user.name is robot.name
               message = message + "#{user.name} (#{user.room}), "
           message = message.substring(0, message.length - 2)
@@ -84,10 +84,8 @@ module.exports = (robot) ->
         
         if payload.users.length isnt 0
           users = payload.users
-          console.log users
           message = "Online in #{users[1].room}: "
-          console.log users
-          for user of users
+          for key, user of users
             unless user.name is robot.name
               message = message + "#{user.name}, "
           message = message.substring(0, message.length - 2)
