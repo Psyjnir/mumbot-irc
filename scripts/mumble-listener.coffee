@@ -81,9 +81,10 @@ module.exports = (robot) ->
           console.log "Error: specific channel not returned!"
           msg.send "Sorry, #{msg.envelope.user.name}, I ran into a problem :( (Did didn't get info about #{channel})"
           return
-          
-        if payload.users isnt 0
+        
+        if payload.users.length isnt 0
           users = payload.users
+          console.log users
           message = "Online in #{users[1].room}: "
           console.log users
           for user of users
