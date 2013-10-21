@@ -17,7 +17,10 @@
 #   atmos, technicalpickles
 
 module.exports = (robot) ->
-  robot.hear /mumbot will you (.*)/i, (msg) ->
+  #robot.respond /(?:ping|notify) me when (.*) gets (?:online|on) (.*)/i, (msg) ->
+    
+  
+  robot.respond /(will|can) you (.*)/i, (msg) ->
     responses = ['Yes!', 'Wat', 'Of course!', 'Maybe...send pix', 'A thousand times, yes!', 'You know our motto!', 'Get away from me.', 'Uh no', 'NEVER', 'Wow so brave']
 
     msg.send msg.random responses
@@ -44,7 +47,7 @@ module.exports = (robot) ->
     res.end "JOIN NOTED"
   
   # Ping mumble partner to get userlist
-  robot.hear /(mumble me$)|(who'?s online\?)|(anyone (online)|(on mumble)\??)/i, (msg) ->
+  robot.hear /(mumble me$)|(who'?s online\?)|(anyone ((online)|(on mumble))\??)/i, (msg) ->
     msg.http("#{process.env.HUBOT_MUMBLE_PARTNER_URL}/mumble/userList")
       .get() (err, res, body) ->
         if err
