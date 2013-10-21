@@ -20,7 +20,7 @@ module.exports = (robot) ->
   robot.hear /mumbot will you (.*)/i, (msg) ->
     responses = ['Yes!', 'Wat', 'Of course!', 'Maybe...send pix', 'A thousand times, yes!', 'You know our motto!', 'Get away from me.', 'Uh no', 'NEVER', 'Wow so brave']
 
-    msg.send msg.random lulz
+    msg.send msg.random responses
     
   # Endpoint for user channel change notifications
   robot.router.get '/user/:name/joined/:channel', (req, res) ->
