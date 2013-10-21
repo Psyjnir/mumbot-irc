@@ -17,6 +17,11 @@
 #   atmos, technicalpickles
 
 module.exports = (robot) ->
+  robot.hear /mumbot will you (.*)/i, (msg) ->
+    responses = ['Yes!', 'Wat', 'Of course!', 'Maybe...send pix', 'A thousand times, yes!', 'You know our motto!', 'Get away from me.', 'Uh no', 'NEVER', 'Wow so brave']
+
+    msg.send msg.random lulz
+    
   # Endpoint for user channel change notifications
   robot.router.get '/user/:name/joined/:channel', (req, res) ->
     userName = req.params.name
@@ -84,7 +89,7 @@ module.exports = (robot) ->
         
         if payload.users.length isnt 0
           users = payload.users
-          message = "Online in #{users[1].room}: "
+          message = "Online in #{users[0].room}: "
           for key, user of users
             unless user.name is robot.name
               message = message + "#{user.name}, "
