@@ -1,5 +1,5 @@
 {
-  "name": "hosted-hubot",
+  "name": "mumbot-irc",
   "version": "2.7.1",
   "author": "GitHub Inc.",
   "keywords": [
@@ -8,7 +8,7 @@
     "campfire",
     "bot"
   ],
-  "description": "A simple helpful robot for your Company",
+  "description": "An IRC-to-Mumble Hubot",
   "licenses": [
     {
       "type": "MIT",
@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/github/hubot.git"
+    "url": "https://github.com/cbpowell/mumbot.git"
   },
   "dependencies": {
     "hubot": ">= 2.6.0 < 3.0.0",

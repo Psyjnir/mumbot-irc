@@ -1,3 +1,20 @@
+# Mumbot (IRC)
+
+Mumbot is an instance of Github's Hubot, designed to idle in an IRC room. Mumbot will update on the status of a partner Mumbot idling in a Mumble chat server.
+
+Mumbot currently supports:
+- Mumble joins and parts
+- Requesting a userlist for Mumble rooms
+
+See [hubot-mumble](https://github.com/cbpowell/hubot-mumble) for the Mumble hubot adapter, which uses the [node-mumble (with custom changes)](https://github.com/cbpowell/node-mumble/tree/reduction) Node.js library to communiate with the Mumble protocol.
+
+The [mumble-listener.coffee](https://github.com/cbpowell/mumbot/blob/master/scripts/mumble-listener.coffee) hubot script does all the heavy lifting for this half of the Mumbot setup. It establishes the HTTP endpoints and crafts the outgoing HTTP requests in order to provide communication with its Mumble hubot parter. When deploying Mumbot to Heroku, you need to set up the following Heroku config option, so that Mumbot knows who to talk to:
+
+    % heroku config:add HUBOT_MUMBLE_PARTNER_URL="https://other_mumble_hubot_name.herokuapp.com"
+
+Likewise, the Mumbot (Mumble) instance will need to know the URL of the Mumbot (IRC) instance.
+
+
 # Hubot
 
 This is a version of GitHub's Campfire bot, hubot. He's pretty cool.

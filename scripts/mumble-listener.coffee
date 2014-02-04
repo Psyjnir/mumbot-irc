@@ -1,29 +1,24 @@
 # Description:
-#   Connect to and query a Mumble server
+#   Connect to, and query a partner Hubot instance running on a Mumble server
 #
 # Dependencies:
 #    None
 #
 # Configuration:
-#   HUBOT_MUMBLE_SERVER
-#	HUBOT_MUMBLE_PORT
-#   HUBOT_MUMBLE_USERNAME
-#   HUBOT_MUMBLE_PASSWORD
+#   HUBOT_MUMBLE_PARTNER_URL
 #
 # Commands:
-#   hubot <keyword> tweet - Returns a link to a tweet about <keyword>
+#   hubot will you <question> - Ask mumbot a question
+#   hubot can you <question> - Ask mumbot a question
+#   mumble me - List users on mumble
+#   who's online? - List users on mumble
+#   anyone online - List users on mumble
 #
 # Author:
-#   atmos, technicalpickles
+#   cbpowell
 
 module.exports = (robot) ->
   #robot.respond /(?:ping|notify) me when (.*) gets (?:online|on) (.*)/i, (msg) ->
-    
-  
-  robot.respond /(will|can) you (.*)/i, (msg) ->
-    responses = ['Yes!', 'Wat', 'Of course!', 'Maybe...send pix', 'A thousand times, yes!', 'You know our motto!', 'Get away from me.', 'Uh no', 'NEVER', 'Wow so brave']
-
-    msg.send msg.random responses
     
   # Endpoint for user channel change notifications
   robot.router.get '/user/:name/joined/:channel', (req, res) ->
@@ -46,6 +41,12 @@ module.exports = (robot) ->
     
     res.end "JOIN NOTED"
   
+  # Respond to questions
+  robot.respond /(will|can) you (.*)/i, (msg) ->
+    responses = ['Yes!', 'Wat', 'Of course!', 'Maybe...send pix', 'A thousand times, yes!', 'You know our motto!', 'Get away from me.', 'Uh no', 'NEVER', 'Wow so brave']
+
+    msg.send msg.random responses
+    
   # Ping mumble partner to get userlist
   robot.hear /(mumble me$)|(who'?s online\?)|(anyone ((online)|(on mumble))\??)/i, (msg) ->
     msg.http("#{process.env.HUBOT_MUMBLE_PARTNER_URL}/mumble/userList")
