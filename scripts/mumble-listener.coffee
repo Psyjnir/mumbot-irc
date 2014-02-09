@@ -30,9 +30,9 @@ module.exports = (robot) ->
     allRooms = getAllRooms robot
     
     if mumbleChannel?
-      message = "#{userName} moved into #{mumbleChannel}"
+      message = "_#{userName}_ moved into #{mumbleChannel}"
     else
-      message = "#{userName} hopped on Mumble!"
+      message = "_#{userName}_ hopped on Mumble!"
     
     i = 0
     while i < allRooms.length
@@ -42,7 +42,7 @@ module.exports = (robot) ->
     res.end "JOIN NOTED"
   
   # Respond to questions
-  robot.respond /(will|can) you (.*)/i, (msg) ->
+  robot.respond /(will|can|are) you (.*)/i, (msg) ->
     responses = ['Yes!', 'Wat', 'Of course!', 'Maybe...send pix', 'A thousand times, yes!', 'You know our motto!', 'Get away from me.', 'Uh no', 'NEVER', 'Wow so brave']
 
     msg.send msg.random responses
@@ -65,7 +65,7 @@ module.exports = (robot) ->
           message = "Online: "
           for key, user of users
             unless user.name is robot.name
-              message = message + "#{user.name} (#{user.room}), "
+              message = message + "_#{user.name}_ (#{user.room}), "
           message = message.substring(0, message.length - 2)
         else
           message = "No one on Mumble!"
@@ -96,7 +96,7 @@ module.exports = (robot) ->
           message = "Online in #{users[0].room}: "
           for key, user of users
             unless user.name is robot.name
-              message = message + "#{user.name}, "
+              message = message + "_#{user.name}_, "
           message = message.substring(0, message.length - 2)
         else
           message = "No one in #{channel}!"
