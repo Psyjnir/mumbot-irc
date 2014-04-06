@@ -22,7 +22,7 @@
   "dependencies": {
     "hubot": ">= 2.6.0 < 3.0.0",
     "hubot-scripts": ">= 2.5.0 < 3.0.0",
-    "hubot-irc": "cbpowell/hubot-irc"
+    "hubot-irc": "https://github.com/cbpowell/hubot-irc/tarball/master"
   },
   "engines": {
     "node": ">= 0.8.x",
