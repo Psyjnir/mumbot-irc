@@ -1,5 +1,6 @@
-["redis-brain.coffee", 
-	"shipit.coffee", 
+[
+	"redis-brain.coffee", 
+    "shipit.coffee", 
 	"horse.coffee", 
 	"sloth-me.coffee",
 	"reload.coffee", 
@@ -9,5 +10,13 @@
 	"alot.coffee",
 	"adult.coffee",
 	"corgime.coffee",
-    "http-info.coffee",
-    "dealwithit.coffee"]
+	"http-info.coffee",
+	"dealwithit.coffee",
+   	"remind.coffee",
+	"sensitive.coffee",
+	"steam.coffee",
+	"time.coffee",
+	"thanks-obama.coffee",
+	"wat.coffee",
+	"urban.coffee"
+]
