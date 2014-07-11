@@ -41,12 +41,6 @@ module.exports = (robot) ->
     
     res.end "JOIN NOTED"
   
-  # Respond to questions
-  robot.respond /(will|can|are) you (.*)/i, (msg) ->
-    responses = ['Yes!', 'Wat', 'Of course!', 'Maybe...send pix', 'A thousand times, yes!', 'You know our motto!', 'Get away from me.', 'Uh no', 'NEVER', 'Wow so brave']
-
-    msg.send msg.random responses
-    
   # Ping mumble partner to get userlist
   robot.hear /(mumble me$)|(who'?s online\?)|(anyone ((online)|(on mumble))\??)/i, (msg) ->
     msg.http("#{process.env.HUBOT_MUMBLE_PARTNER_URL}/mumble/userList")
