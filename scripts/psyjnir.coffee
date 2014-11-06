@@ -4,15 +4,8 @@
 # Dependencies:
 #    None
 #
-# Configuration:
-#   HUBOT_MUMBLE_PARTNER_URL
-#
 # Commands:
-#   hubot will you <question> - Ask mumbot a question
-#   hubot can you <question> - Ask mumbot a question
-#   mumble me - List users on mumble
-#   who's online? - List users on mumble
-#   anyone online - List users on mumble
+#    None
 #
 # Author:
 #   cbpowell
