@@ -9,4 +9,4 @@ deploy:
     secure: QGkx0B3r4xQA9Cyt+SMOOlSPc2N2Zm46UB3yRVSxAHNd4Odb5QYnSWUYtesUiVhDc7eta7Q0wCgmOCLYTZP7RICDAFWvCRGhsHZC/nyLD3vodbTdwJv3lNjiN4AgYmHwxmVy0Rru7aIqOSOq4s+vhE1KqaG/G0LrzwcjXfe1F24=
   app: tranquil-tor-5504
   on:
-    repo: cbpowell/mumbot-irc
+    repo: Psyjnir/mumbot-irc
