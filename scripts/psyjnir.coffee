@@ -28,5 +28,5 @@ module.exports = (robot) ->
     responses = ['No', 'That has never happened', 'Who are you, Hobbyte?', 'I remember when you could call a magazine a clip', 'I remember when Sepkis Prime cast a great shadow over our city', 'Remember when you used to play games with us?']
     
     rand = Math.floor(Math.random() * (100))
-    if rand < 30
+    if rand < 40
       msg.send msg.random responses
