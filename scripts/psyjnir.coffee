@@ -25,6 +25,6 @@ module.exports = (robot) ->
     
   # Respond to "remember when"
   robot.hear /(^|\W)remember when(\z|\W|$)/i, (msg) ->
-    responses = ['No', 'That has never happened', 'Who are you, Hobbyte?', 'I remember when you could call a magazine a clip', 'I remember when Sepkis Prime cast a great shadow over our city', 'Remember when you used to play games with us?']
+    responses = ['No', 'That has never happened', 'Who are you, Hobbyte?', 'I remember when you could call a magazine a clip', 'I remember when Sepiks Prime cast a great shadow over our city', 'Remember when you used to play games with us?']
     
     msg.send msg.random responses
