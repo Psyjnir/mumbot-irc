@@ -26,7 +26,7 @@
     "hubot-heroku-keepalive": "0.0.4",
     "hubot-irc": "https://github.com/cbpowell/hubot-irc/tarball/master",
     "hubot-scripts": ">= 2.5.0 < 3.0.0",
-    "hubot-markov": "https://github.com/cbpowell/hubot-markov/tarball/master"
+    "hubot-markov": "https://github.com/cbpowell/hubot-markov/tarball/master",
     "jsdom": "0.8.10",
     "request": "2.14.0",
     "soupselect": "0.2.0",
