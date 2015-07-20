@@ -7,6 +7,6 @@ deploy:
   provider: heroku
   api_key:
     secure: QGkx0B3r4xQA9Cyt+SMOOlSPc2N2Zm46UB3yRVSxAHNd4Odb5QYnSWUYtesUiVhDc7eta7Q0wCgmOCLYTZP7RICDAFWvCRGhsHZC/nyLD3vodbTdwJv3lNjiN4AgYmHwxmVy0Rru7aIqOSOq4s+vhE1KqaG/G0LrzwcjXfe1F24=
-  app: tranquil-tor-5504
+  app: mumbot-irc
   on:
     repo: Psyjnir/mumbot-irc
