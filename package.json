@@ -20,21 +20,14 @@
     "url": "https://github.com/cbpowell/mumbot-irc.git"
   },
   "dependencies": {
-    "cheerio": "0.10.7",
-    "htmlparser": ">= 1.7.0",
     "hubot": "^2.10.0",
-    "hubot-heroku-keepalive": "0.0.4",
     "hubot-irc": "https://github.com/cbpowell/hubot-irc/tarball/master",
     "hubot-scripts": ">= 2.5.0 < 3.0.0",
     "hubot-markov": "https://github.com/cbpowell/hubot-markov/tarball/master",
-    "jsdom": "0.8.10",
-    "request": "2.14.0",
-    "soupselect": "0.2.0",
-    "underscore": "1.3.3",
-    "validator": "0.4.20"
+    "hubot-mumbler": "https://github.com/cbpowell/hubot-mumbler/tarball/master"
   },
   "engines": {
-    "node": ">= 0.8.x < 0.12.0",
+    "node": ">= 0.8.0",
     "npm": ">= 1.1.x"
   }
 }
