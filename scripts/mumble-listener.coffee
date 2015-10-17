@@ -16,13 +16,18 @@
 #
 # Author:
 #   cbpowell
+#   rsogomonian
+create_quiet_username = (username) ->
+  usernameHead = username.slice(0, 1)
+  usernameTail = username.slice(1, username.length)
+  usernameHead + "\u200B" + usernameTail
 
 module.exports = (robot) ->
   #robot.respond /(?:ping|notify) me when (.*) gets (?:online|on) (.*)/i, (msg) ->
     
   # Endpoint for user channel change notifications
   robot.router.get '/user/:name/joined/:channel', (req, res) ->
-    userName = req.params.name
+    userName = create_quiet_username(req.params.name)
     mumbleChannel = req.params.channel
     
     console.log "User: #{userName} to Channel: #{mumbleChannel}"
@@ -30,9 +35,9 @@ module.exports = (robot) ->
     allRooms = getAllRooms robot
     
     if mumbleChannel?
-      message = "_#{userName}_ moved into #{mumbleChannel}"
+      message = "#{userName} moved into #{mumbleChannel}"
     else
-      message = "_#{userName}_ hopped on Mumble!"
+      message = "#{userName} hopped on Mumble!"
     
     i = 0
     while i < allRooms.length
@@ -56,13 +61,14 @@ module.exports = (robot) ->
           
         if payload.users.length isnt 0
           users = payload.users
-          message = "Online: "
+          message = "Users Currenty Online: "
           for key, user of users
             unless user.name is robot.name
-              message = message + "_#{user.name}_ (#{user.room}), "
+              username = create_quiet_username(user.name)
+              message = message + "#{username} (#{user.room}), "
           message = message.substring(0, message.length - 2)
         else
-          message = "No one on Mumble!"
+          message = "There are currently no users on the mumble server."
         
         msg.send message
     
@@ -70,7 +76,7 @@ module.exports = (robot) ->
     channel = msg.match[1] or msg.match[2]
     uriChannel = encodeURIComponent channel
     if not channel?
-      msg.send "Not a valid channel :("
+      msg.send "Sorry, that is not a valid channel! :("
       return
     
     msg.http("#{process.env.HUBOT_MUMBLE_PARTNER_URL}/mumble/userList/#{uriChannel}")
@@ -90,7 +96,8 @@ module.exports = (robot) ->
           message = "Online in #{users[0].room}: "
           for key, user of users
             unless user.name is robot.name
-              message = message + "_#{user.name}_, "
+              username = create_quiet_username(user.name)
+              message = message + "#{username}, "
           message = message.substring(0, message.length - 2)
         else
           message = "No one in #{channel}!"
