@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "hubot": "^2.16.0",
-    "hubot-irc": "https://github.com/cbpowell/hubot-irc/tarball/master",
+    "hubot-irc": "~0.2.8",
     "hubot-scripts": ">= 2.5.0 < 3.0.0",
     "hubot-markov": "https://github.com/cbpowell/hubot-markov/tarball/master",
     "hubot-mumbler": "https://github.com/cbpowell/hubot-mumbler/tarball/master",
