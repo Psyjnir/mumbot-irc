@@ -28,3 +28,9 @@ module.exports = (robot) ->
     responses = ['No', 'That has never happened', 'Who are you, Hobbyte?', 'I remember when you could call a magazine a clip', 'I remember when Sepiks Prime cast a great shadow over our city', 'Remember when you used to play games with us?']
     
     msg.send msg.random responses
+
+  # Respond to "trout" by slapping someone as mumbot
+  robot.hear /(^\/trout\s)(\w+\b)/i, (msg) ->
+    vars = msg.split " "
+
+    msg.send "/me slaps {msg[1]} around a bit with a large trout."
