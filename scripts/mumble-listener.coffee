@@ -16,7 +16,14 @@
 #
 # Author:
 #   cbpowell
-#   rsogomonian
+#
+# Contributors:
+#   Robert Sogomonian
+#     E-mail: rsogomonian@psyjnir.com
+#     GitHub: https://github.com/Psyrixx
+#     Twitter: https://twitter.com/Psyrixx
+#     Website: https://psyjnir.com/
+
 create_quiet_username = (username) ->
   usernameHead = username.slice(0, 1)
   usernameTail = username.slice(1, username.length)
