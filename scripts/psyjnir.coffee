@@ -29,8 +29,8 @@ module.exports = (robot) ->
     
     msg.send msg.random responses
 
-  # Respond to "trout" by slapping someone as mumbot
-  robot.hear /(^\/trout\s)(\w+\b)/i, (msg) ->
-    vars = msg.split " "
+  # Respond to "!nuke" by slapping someone as mumbot
+  robot.respond /nuke\s(\w+\b)/i, (msg) ->
+    targetUser = msg.match[1]
 
-    msg.send "/me slaps {msg[1]} around a bit with a large trout."
+    msg.emote "locks on to #{targetUser} and FIRES ZE MISSILES. In ninety minutes a pillar of holy fire will rise at #{targetUser}'s location. Now no man can stop me.  I'm set on my course.  No force can stop me. I'm cool, I'm badass, blah, blah, blah, blah."
