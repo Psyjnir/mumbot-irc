@@ -9,6 +9,13 @@
 #
 # Author:
 #   cbpowell
+#
+# Contributors:
+#   Robert Sogomonian
+#     E-mail: rsogomonian@psyjnir.com
+#     GitHub: https://github.com/Psyrixx
+#     Twitter: https://twitter.com/Psyrixx
+#     Website: https://psyjnir.com/
 
 module.exports = (robot) ->
   # Respond to questions
