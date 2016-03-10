@@ -32,5 +32,6 @@ module.exports = (robot) ->
   # Respond to "!nuke" by slapping someone as mumbot
   robot.respond /nuke\s(\w+\b)/i, (msg) ->
     targetUser = msg.match[1]
+    responses = ['FIRES ZE MISSILES!', '"Strategic Launch Detected" blares over the intercom.', "Abu Kaleem Malik begins shouting his terrorist propaganda. Harry Tasker translates: \"In ninety minutes a pillar of holy fire will rise at #{targetUser}'s location. Now no man can stop us. We're set on our course. No force can stop us. We're cool, we're badass, blah, blah, blah, blah.\""]
 
-    msg.emote "locks on to #{targetUser} and FIRES ZE MISSILES. In ninety minutes a pillar of holy fire will rise at #{targetUser}'s location. Now no man can stop me.  I'm set on my course.  No force can stop me. I'm cool, I'm badass, blah, blah, blah, blah."
+    msg.emote "locks on to #{targetUser} and " + msg.random responses
