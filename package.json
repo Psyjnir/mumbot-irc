@@ -21,8 +21,8 @@
   },
   "dependencies": {
     "hubot": "^2.16.0",
-    "hubot-irc": "~0.2.8",
     "hubot-scripts": ">= 2.5.0 < 3.0.0",
+    "hubot-irc": "git://github.com/nandub/hubot-irc#51d1f4b",
     "hubot-markov": "https://github.com/cbpowell/hubot-markov/tarball/master",
     "hubot-mumbler": "https://github.com/cbpowell/hubot-mumbler/tarball/master",
     "cheerio": "0.10.7",
