@@ -1,12 +1,27 @@
 language: node_js
 node_js:
-- '0.11'
-- '0.10'
-
-deploy:
-  provider: heroku
-  api_key:
-    secure: QGkx0B3r4xQA9Cyt+SMOOlSPc2N2Zm46UB3yRVSxAHNd4Odb5QYnSWUYtesUiVhDc7eta7Q0wCgmOCLYTZP7RICDAFWvCRGhsHZC/nyLD3vodbTdwJv3lNjiN4AgYmHwxmVy0Rru7aIqOSOq4s+vhE1KqaG/G0LrzwcjXfe1F24=
-  app: mumbot-irc
-  on:
-    repo: Psyjnir/mumbot-irc
+- '5'
+compiler: clang-3.6
+env:
+  matrix:
+  - CXX=clang-3.6
+  global:
+    secure: ZC7U9902Jw4QQD1FlSq3hGIqtJq0OxOi7ReP7s/i2cxXlhMktksVkne/9wM60oQUrGlesbiXS5atlZFhwEml7dTgxpEs3bo7T/AWDxMkxynFuwLp2SOjRGqvMghCh7ZASTDKjbVR9f2slny/4rpyiu9KulwxEJ4uh4sqj74Nh4o=
+addons:
+  apt:
+    sources:
+    - llvm-toolchain-precise-3.6
+    - ubuntu-toolchain-r-test
+    packages:
+    - clang-3.6
+    - g++-4.8
+after_success:
+- eval "$(ssh-agent -s)"
+- chmod 600 .travis/travis_rsa
+- ssh-add .travis/travis_rsa
+- git config --global push.default simple
+- git remote add deploy ${DEPLOY_LOCATION}
+- git push deploy
+before_install:
+- openssl aes-256-cbc -K $encrypted_7ef798901b15_key -iv $encrypted_7ef798901b15_iv
+  -in .travis/travis_rsa.enc -out .travis/travis_rsa -d
