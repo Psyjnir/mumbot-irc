@@ -1,4 +1,7 @@
 [
     "hubot-markov",
-    "hubot-mumbler"
+    "hubot-mumbler",
+    "hubot-google-images",
+    "hubot-redis-brain",
+    "hubot-shipit"
 ]

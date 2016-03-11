@@ -1,8 +1,5 @@
 [
-	"redis-brain.coffee", 
-    "shipit.coffee", 
 	"horse.coffee", 
-	"sloth-me.coffee",
 	"urban.coffee",
 	"romanemperor.coffee",
 	"sheits.coffee",
@@ -14,5 +11,5 @@
 	"time.coffee",
 	"thanks-obama.coffee",
 	"wat.coffee",
-    "giphy.coffee"
+  "giphy.coffee"
 ]
