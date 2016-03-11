@@ -44,7 +44,7 @@ module.exports = (robot) ->
     msg.emote "locks on to #{targetUser} and " + msg.random responses
 
   # Respond when people talk about Pizza or Supreme Commander with Sorian AI Quotes
-  robot.hear /(pizza|supreme commander|faf|forged alliance forever|2v2|pvpizza)/i, (msg) ->
+  robot.hear /(pizza|supreme commander|faf|forged alliance forever|2v2|pvpizza|sorian)/i, (msg) ->
     responses = ['I hope you weren\'t getting used to being alive.', 'Now, you guys play nice with my pet.', 'I\'m sending a playmate for you.', 'I\'ve Got a surprise for ya!', 'Next time, your mine.', 'I was going easy on you, noob.', 'I\'ll get you next time.', 'New map please. Preferably one with markers.', 'Um, can we play on a map with markers?', 'I guess failure runs in your family.']
 
     msg.send msg.random responses
