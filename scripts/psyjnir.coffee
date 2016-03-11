@@ -45,6 +45,15 @@ module.exports = (robot) ->
 
   # Respond when people talk about Pizza or Supreme Commander with Sorian AI Quotes
   robot.hear /(pizza|supreme commander|faf|forged alliance forever|2v2|pvpizza|sorian)/i, (msg) ->
-    responses = ['I hope you weren\'t getting used to being alive.', 'Now, you guys play nice with my pet.', 'I\'m sending a playmate for you.', 'I\'ve Got a surprise for ya!', 'Next time, your mine.', 'I was going easy on you, noob.', 'I\'ll get you next time.', 'New map please. Preferably one with markers.', 'Um, can we play on a map with markers?', 'I guess failure runs in your family.']
+    responses = ['I hope you weren\'t getting used to being alive.', 'Now, you guys play nice with my pet.', 'I\'m sending a playmate for you.', 'I\'ve Got a surprise for ya!', 'Next time, your mine.', 'I was going easy on you, noob.', 'I\'ll get you next time.', 'New map please. Preferably one with markers.', 'Um, can we play on a map with markers?', 'I guess failure runs in your family.', 'Looks like some remedial training is in order.']
 
     msg.send msg.random responses
+
+  # Respond to "soccerdinner"
+  robot.respond /soccerdinner/i, (msg) ->
+    if msg.user.name is "nahun"
+      msg.reply "You suck."
+    else
+      msg.reply "Who are you, nahun?"
+
+
