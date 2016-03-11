@@ -37,8 +37,14 @@ module.exports = (robot) ->
     msg.send msg.random responses
 
   # Respond to "!nuke" by slapping someone as mumbot
-  robot.respond /nuke\s(\w+\b)/i, (msg) ->
+  robot.hear /nuke\s(\w+\b)/i, (msg) ->
     targetUser = msg.match[1]
     responses = ['FIRES ZE MISSILES!', '"Strategic Launch Detected" blares over the intercom.', "Abu Kaleem Malik begins shouting his terrorist propaganda, which Harry Tasker translates for the audience: \"In ninety minutes a pillar of holy fire will rise at #{targetUser}'s location. Now no man can stop us. We're set on our course. No force can stop us. We're cool, we're badass, blah, blah, blah, blah.\""]
 
     msg.emote "locks on to #{targetUser} and " + msg.random responses
+
+  # Respond when people talk about Pizza or Supreme Commander with Sorian AI Quotes
+  robot.hear /(pizza|supreme commander|faf|forged alliance forever|2v2|pvpizza|sorian)/i, (msg) ->
+    responses = ['I hope you weren\'t getting used to being alive.', 'Now, you guys play nice with my pet.', 'I\'m sending a playmate for you.', 'I\'ve Got a surprise for ya!', 'Next time, your mine.', 'I was going easy on you, noob.', 'I\'ll get you next time.', 'New map please. Preferably one with markers.', 'Um, can we play on a map with markers?', 'I guess failure runs in your family.']
+
+    msg.send msg.random responses
