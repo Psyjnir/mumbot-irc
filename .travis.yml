@@ -28,7 +28,7 @@ after_success:
 - git config --global push.default simple
 - git remote add test "${TEST_LOCATION}"
 - git remote add deploy "${DEPLOY_LOCATION}"
-- if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then git push test master /dev/null 2>&1; else git push deploy master /dev/null 2>&1; fi
+- if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then git push test master > /dev/null 2>&1; else git push deploy master > /dev/null 2>&1; fi
 before_install:
 - openssl aes-256-cbc -K $encrypted_d7ef8710d4fd_key -iv $encrypted_d7ef8710d4fd_iv
   -in .travis/secrets.tar.enc -out .travis/secrets.tar -d
