@@ -51,9 +51,7 @@ module.exports = (robot) ->
 
   # Respond to "soccerdinner"
   robot.hear /(soccerdinner|soccer dinner)/i, (msg) ->
-    msg.user.name is "nahun"
+    if msg.user.name is "nahun"
       msg.reply "you go find fire and sit in it."
-    msg.user.name is not "nahun"
+    if msg.user.name is not "nahun"
       msg.reply "who do you think you are, nahun?"
-
-
