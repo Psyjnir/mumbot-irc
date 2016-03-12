@@ -6,7 +6,8 @@ env:
   matrix:
   - CXX=clang-3.6
   global:
-    secure: ZC7U9902Jw4QQD1FlSq3hGIqtJq0OxOi7ReP7s/i2cxXlhMktksVkne/9wM60oQUrGlesbiXS5atlZFhwEml7dTgxpEs3bo7T/AWDxMkxynFuwLp2SOjRGqvMghCh7ZASTDKjbVR9f2slny/4rpyiu9KulwxEJ4uh4sqj74Nh4o=
+  - secure: ZC7U9902Jw4QQD1FlSq3hGIqtJq0OxOi7ReP7s/i2cxXlhMktksVkne/9wM60oQUrGlesbiXS5atlZFhwEml7dTgxpEs3bo7T/AWDxMkxynFuwLp2SOjRGqvMghCh7ZASTDKjbVR9f2slny/4rpyiu9KulwxEJ4uh4sqj74Nh4o=
+  - secure: Tp1bJShbt5pS7WlYe6sM0A/HXkRKGyJJfllSV61C4Bwgro7It32gKQnnXPNpNUt1P6oYZ575CVqAtPvD7chxWkjaKo0PW5zmjW92nJ9Hn3tpP5zLC0CQ4KrMXR3dYS38xMn6FQoL8eXRpPD5+FxupUS7BuQmwqYVvtW79S4k60o=
 sudo: false
 addons:
   apt:
@@ -17,16 +18,17 @@ addons:
     - clang-3.6
     - g++-4.8
 cache:
-  - apt
-  - directories:
-    - node_modules
+- apt
+- directories:
+  - node_modules
 after_success:
 - eval "$(ssh-agent -s)"
 - chmod 600 .travis/travis_rsa
 - ssh-add .travis/travis_rsa
 - git config --global push.default simple
+- if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then DEPLOY_LOCATION = $TEST_LOCATION fi
 - git remote add deploy "${DEPLOY_LOCATION}"
-- git push deploy master 1> /dev/null
+- git push deploy master
 before_install:
 - openssl aes-256-cbc -K $encrypted_d7ef8710d4fd_key -iv $encrypted_d7ef8710d4fd_iv
   -in .travis/secrets.tar.enc -out .travis/secrets.tar -d
