@@ -23,9 +23,9 @@ after_success:
 - git remote add deploy "${DEPLOY_LOCATION}"
 - git push deploy master
 before_install:
-- openssl aes-256-cbc -K $encrypted_7ef798901b15_key -iv $encrypted_7ef798901b15_iv
+- openssl aes-256-cbc -K $encrypted_d7ef8710d4fd_key -iv $encrypted_d7ef8710d4fd_iv
   -in .travis/secrets.tar.enc -out .travis/secrets.tar -d
 - tar xvf .travis/secrets.tar -C .travis/
 - mkdir -p ~/.ssh
 - cp .travis/known_hosts ~/.ssh/known_hosts
-- chmod 600 ~/.ssh/known_hosts 
+- chmod 600 ~/.ssh/known_hosts
