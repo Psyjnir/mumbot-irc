@@ -19,7 +19,6 @@ after_success:
 - eval "$(ssh-agent -s)"
 - chmod 600 .travis/travis_rsa
 - ssh-add .travis/travis_rsa
-- cp .travis/known_hosts ~/.ssh/known_hosts
 - git config --global push.default simple
 - git remote add deploy "${DEPLOY_LOCATION}"
 - git push deploy master
@@ -27,3 +26,6 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_7ef798901b15_key -iv $encrypted_7ef798901b15_iv
   -in .travis/secrets.tar.enc -out .travis/secrets.tar -d
 - tar xvf .travis/secrets.tar -C .travis/
+- mkdir -p ~/.ssh
+- cp .travis/known_hosts ~/.ssh/known_hosts
+- chmod 600 ~/.ssh/known_hosts 
