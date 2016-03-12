@@ -63,4 +63,4 @@ module.exports = (robot) ->
 
   # Respond to "knife"
   robot.hear /(knife|knives|ghost|space)/i, (msg) ->
-    msg.sent "I'm a knife ... Knifin' Around ... cut cut cut cut cut cut cut cut cut cut hmmm cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut"
+    msg.send "I'm a knife ... Knifin' Around ... cut cut cut cut cut cut cut cut cut cut hmmm cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut"
