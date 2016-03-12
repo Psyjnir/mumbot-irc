@@ -50,7 +50,7 @@ module.exports = (robot) ->
     msg.send msg.random responses
 
   # Respond to "soccerdinner"
-  robot.hear /(soccerdinner|soccer dinner)/i, (msg) ->
+  robot.respond /soccerdinner/i, (msg) ->
     if msg.user.name is "nahun"
       msg.reply "You suck."
     else
