@@ -50,10 +50,10 @@ module.exports = (robot) ->
     msg.send msg.random responses
 
   # Respond to "soccerdinner"
-  robot.hear /(soccerdinner|soccer dinner)/i, (msg) ->
-    msg.user.name is "nahun"
-      msg.reply "you go find fire and sit in it."
-    msg.user.name is not "nahun"
-      msg.reply "who do you think you are, nahun?"
+  # robot.hear /(soccerdinner|soccer dinner)/i, (msg) ->
+  #  msg.user.name is "nahun"
+  #    msg.reply "you go find fire and sit in it."
+  #  msg.user.name is not "nahun"
+  #    msg.reply "who do you think you are, nahun?"
 
 
