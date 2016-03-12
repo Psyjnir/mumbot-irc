@@ -56,3 +56,7 @@ module.exports = (robot) ->
       msg.reply "you go find fire and sit in it."
     if msg.message.user.name isnt "nahun"
       msg.reply "who do you think you are, nahun?"
+
+  # Respond to "good shit"
+  robot.hear /(good shit)/, (msg) ->
+    msg.send "👌👀👌👀👌👀👌👀👌👀 good shit go౦ԁ sHit👌 thats ✔ some good👌👌shit right👌👌there👌👌👌 right✔there ✔✔if i do ƽaү so my self 💯 i say so 💯 thats what im talking about right there right there (chorus: ʳᶦᵍʰᵗ ᵗʰᵉʳᵉ) mMMMMᎷМ💯 👌👌 👌НO0ОଠOOOOOОଠଠOoooᵒᵒᵒᵒᵒᵒᵒᵒᵒ👌 👌👌 👌 💯 👌 👀 👀 👀 👌👌Good shit"
