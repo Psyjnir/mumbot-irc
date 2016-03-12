@@ -11,4 +11,4 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]
 fi
 
 echo "Pushing to Test"
-git push testing master
+git push testing master --force
