@@ -7,8 +7,7 @@ env:
   - CXX=clang-3.6
   global:
     secure: ZC7U9902Jw4QQD1FlSq3hGIqtJq0OxOi7ReP7s/i2cxXlhMktksVkne/9wM60oQUrGlesbiXS5atlZFhwEml7dTgxpEs3bo7T/AWDxMkxynFuwLp2SOjRGqvMghCh7ZASTDKjbVR9f2slny/4rpyiu9KulwxEJ4uh4sqj74Nh4o=
-sudo: required
-dist: trusty
+sudo: false
 addons:
   apt:
     sources:
