@@ -26,7 +26,7 @@ after_success:
 - chmod 600 .travis/travis_rsa
 - ssh-add .travis/travis_rsa
 - git config --global push.default simple
-- if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then DEPLOY_LOCATION = $TEST_LOCATION fi
+- if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then DEPLOY_LOCATION=$TEST_LOCATION; fi
 - git remote add deploy "${DEPLOY_LOCATION}"
 - git push deploy master
 before_install:
