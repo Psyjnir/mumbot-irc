@@ -15,6 +15,10 @@ addons:
     packages:
     - clang-3.6
     - g++-4.8
+cache:
+  - apt
+  - directories:
+    - node_modules
 after_success:
 - eval "$(ssh-agent -s)"
 - chmod 600 .travis/travis_rsa
