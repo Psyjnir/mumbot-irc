@@ -39,7 +39,7 @@ module.exports = (robot) ->
   # Respond to "mumbot: nuke <person>" by various nuke launch descriptions
   robot.respond /nuke\s(\w+\b)/i, (msg) ->
     targetUser = msg.match[1]
-    responses = ['SHALL WE PLAY A GAME? Love to. How about Global Thermonuclear War? WOULDN\'T YOU PREFER A GOOD GAME OF CHESS?', 'GREETINGS PROFESSOR FALKEN. A STRANGE GAME. THE ONLY WINNING MOVE IS NOT TO PLAY. HOW ABOUT A NICE GAME OF', 'FIRES ZE MISSILES!', '"Strategic Launch Detected" blares over the intercom.', "Abu Kaleem Malik begins shouting his terrorist propaganda, which Harry Tasker translates for the audience: \"In ninety minutes a pillar of holy fire will rise at #{targetUser}'s location. Now no man can stop us. We're set on our course. No force can stop us. We're cool, we're badass, blah, blah, blah, blah.\""]
+    responses = ['SHALL WE PLAY A GAME? Love to. How about Global Thermonuclear War? WOULDN\'T YOU PREFER A GOOD GAME OF CHESS?', 'GREETINGS PROFESSOR FALKEN. A STRANGE GAME. THE ONLY WINNING MOVE IS NOT TO PLAY. HOW ABOUT A NICE GAME OF CHESS', 'FIRES ZE MISSILES!', '"Strategic Launch Detected" blares over the intercom.', "Abu Kaleem Malik begins shouting his terrorist propaganda, which Harry Tasker translates for the audience: \"In ninety minutes a pillar of holy fire will rise at #{targetUser}'s location. Now no man can stop us. We're set on our course. No force can stop us. We're cool, we're badass, blah, blah, blah, blah.\""]
 
     msg.emote "locks on to #{targetUser} and " + msg.random responses
 
@@ -50,10 +50,10 @@ module.exports = (robot) ->
     msg.send msg.random responses
 
   # Respond to "soccerdinner"
-  # robot.hear /(soccerdinner|soccer dinner)/i, (msg) ->
-  #  msg.user.name is "nahun"
-  #    msg.reply "you go find fire and sit in it."
-  #  msg.user.name is not "nahun"
-  #    msg.reply "who do you think you are, nahun?"
+  robot.hear /(soccerdinner|soccer dinner)/i, (msg) ->
+    msg.user.name is "nahun"
+      msg.reply "you go find fire and sit in it."
+    msg.user.name is not "nahun"
+      msg.reply "who do you think you are, nahun?"
 
 
