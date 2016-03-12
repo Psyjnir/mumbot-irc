@@ -21,7 +21,7 @@ after_success:
 - ssh-add .travis/travis_rsa
 - git config --global push.default simple
 - git remote add deploy "${DEPLOY_LOCATION}"
-- git push deploy
+- git push deploy master
 before_install:
 - openssl aes-256-cbc -K $encrypted_7ef798901b15_key -iv $encrypted_7ef798901b15_iv
   -in .travis/travis_rsa.enc -out .travis/travis_rsa -d
