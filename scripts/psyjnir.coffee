@@ -8,7 +8,8 @@
 #    None
 #
 # Author:
-#   cbpowell
+#   Charles Powell
+#     Github: https://github.com/cbpowell
 #
 # Contributors:
 #   Robert Sogomonian
