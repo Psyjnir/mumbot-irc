@@ -1,4 +1,5 @@
 # Mumbot (IRC)
+[![Build Status](https://travis-ci.org/Psyjnir/mumbot-irc.svg?branch=master)](https://travis-ci.org/Psyjnir/mumbot-irc)
 
 Mumbot is an instance of Github's Hubot, designed to idle in an IRC room. In addition to being a normal IRC Hubot instance, Mumbot will update on the status of a partner Mumbot idling in a Mumble chat server.
 
