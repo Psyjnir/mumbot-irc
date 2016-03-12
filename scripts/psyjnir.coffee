@@ -53,9 +53,13 @@ module.exports = (robot) ->
   # Respond to "soccerdinner"
   robot.hear /(soccerdinner|soccer dinner)/i, (msg) ->
     if msg.message.user.name is "nahun"
-      msg.reply "you go find fire and sit in it."
+      responses = ['You go find fire and sit in it.', 'Go home.']
+
+      msg.reply msg.random responses
     if msg.message.user.name isnt "nahun"
-      msg.reply "who do you think you are, nahun?"
+      responses = ['Hey!', 'Who do you think you are, nahun?!', 'Go ahead and nahun us, why don\'t you? Jerk.']
+
+      msg.reply msg.random responses
 
   # Respond to "good shit"
   robot.hear /(good shit)/i, (msg) ->
