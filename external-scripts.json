@@ -3,5 +3,10 @@
     "hubot-mumbler",
     "hubot-google-images",
     "hubot-redis-brain",
-    "hubot-shipit"
+    "hubot-shipit",
+    "hubot-pugme",
+    "hubot-help",
+    "hubot-google-translate",
+    "hubot-rules",
+    "hubot-tell"
 ]
