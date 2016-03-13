@@ -67,4 +67,6 @@ module.exports = (robot) ->
 
   # Respond to "knife"
   robot.hear /(knife|knives|ghost|space)/i, (msg) ->
-    msg.send "I'm a knife ... Knifin' Around ... cut cut cut cut cut cut cut cut cut cut hmmm cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut"
+    responses = ["I'm a knife ... Knifin' Around ... cut cut cut cut cut cut cut cut cut cut hmmm cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut", "But I will put anything in to my mouth that is given to me - whether it's supposed to go there or not - because... I'm different.", "I buried a present for you out in the yard... why don't you go dig it up."]
+    
+    msg.send msg.random responses
