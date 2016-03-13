@@ -11,8 +11,9 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 fi
 
 if [ "$TRAVIS_BRANCH" != "master" ]; then
+  echo "NOTE: Pull-Request branch, not continuing."
   exit 0
 fi
   
-echo "Pushing to Test"
+echo "NOTE: Pushing to Test!"
 git push testing master --force
