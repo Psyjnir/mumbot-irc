@@ -65,6 +65,12 @@ module.exports = (robot) ->
   robot.hear /(good shit)/i, (msg) ->
     msg.send "👌👀👌👀👌👀👌👀👌👀 good shit go౦ԁ sHit👌 thats ✔ some good👌👌shit right👌👌there👌👌👌 right✔there ✔✔if i do ƽaү so my self 💯 i say so 💯 thats what im talking about right there right there (chorus: ʳᶦᵍʰᵗ ᵗʰᵉʳᵉ) mMMMMᎷМ💯 👌👌 👌НO0ОଠOOOOOОଠଠOoooᵒᵒᵒᵒᵒᵒᵒᵒᵒ👌 👌👌 👌 💯 👌 👀 👀 👀 👌👌Good shit"
 
+  # Respond to "weird shit"
+  robot.hear /(weird shit)/i, (msg) ->
+    responses = ["Weeeeeeeird science!", "💩 👌 💩 👌 💩 👌 💩 👌 weird shit weEiRd sHit 👌 👌 💯 thats ✔ some weird 💩 shit right 🎷🐴there🎷🐴 🎷🐴", "Spongebob has been and will always be my favorite cartoon show."]
+
+    msg.send msg.random responses
+
   # Respond to "knife"
   robot.hear /(knife|knives|space ghost|spaceghost)/i, (msg) ->
     responses = ["I'm a knife ... Knifin' Around ... cut cut cut cut cut cut cut cut cut cut hmmm cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut", "But I will put anything in to my mouth that is given to me - whether it's supposed to go there or not - because... I'm different.", "I buried a present for you out in the yard... why don't you go dig it up."]
