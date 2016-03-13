@@ -1,14 +1,15 @@
 {
   "name": "mumbot-irc",
   "version": "2.7.1",
-  "author": "GitHub Inc.",
+  "author": "Psyjnir, Inc.",
   "keywords": [
     "github",
     "hubot",
-    "campfire",
+    "irc",
+    "psyjnir",
     "bot"
   ],
-  "description": "An IRC-to-Mumble Hubot",
+  "description": "An IRC and Mumble Hubot",
   "licenses": [
     {
       "type": "MIT",
