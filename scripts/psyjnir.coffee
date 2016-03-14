@@ -20,8 +20,8 @@
 
 module.exports = (robot) ->
   # Testing UserListing to see if I can write a .ping command (like a broadcast)
-  robot.respond /(broadcast)/, (msg) ->
-    robot.adapter.command('names')
+  # robot.respond /(broadcast)/, (msg) ->
+  #   robot.adapter.command('names')
 
   # Respond to questions.
   robot.respond /(will|can|are) you (.*)/i, (msg) ->
