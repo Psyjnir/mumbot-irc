@@ -1,14 +1,15 @@
 {
   "name": "mumbot-irc",
   "version": "2.7.1",
-  "author": "GitHub Inc.",
+  "author": "Psyjnir, Inc.",
   "keywords": [
     "github",
     "hubot",
-    "campfire",
+    "irc",
+    "psyjnir",
     "bot"
   ],
-  "description": "An IRC-to-Mumble Hubot",
+  "description": "An IRC and Mumble Hubot",
   "licenses": [
     {
       "type": "MIT",
@@ -20,19 +21,24 @@
     "url": "https://github.com/cbpowell/mumbot-irc.git"
   },
   "dependencies": {
+    "cheerio": "0.10.7",
     "hubot": "^2.16.0",
     "hubot-google-images": "^0.2.5",
+    "hubot-google-translate": "^0.2.0",
+    "hubot-help": "^0.1.3",
     "hubot-irc": "git://github.com/nandub/hubot-irc#51d1f4b",
     "hubot-markov": "https://github.com/cbpowell/hubot-markov/tarball/master",
     "hubot-mumbler": "https://github.com/cbpowell/hubot-mumbler/tarball/master",
+    "hubot-pugme": "^0.1.0",
     "hubot-redis-brain": "0.0.3",
+    "hubot-rules": "^0.1.1",
     "hubot-scripts": ">= 2.5.0 < 3.0.0",
     "hubot-shipit": "^0.2.0",
-    "request": "2.14.0",
-    "cheerio": "0.10.7"
+    "hubot-tell": "^1.2.4",
+    "request": "2.14.0"
   },
   "engines": {
-    "node": ">= 0.8.0",
-    "npm": ">= 1.1.x"
+    "node": "^4.0.0",
+    "npm": ">= ^2.0.0"
   }
 }
