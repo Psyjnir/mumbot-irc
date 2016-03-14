@@ -19,9 +19,10 @@
 #     Website: https://psyjnir.com/
 
 module.exports = (robot) ->
-  # Testing UserListing to see if I can write a .ping command (like a broadcast)
-  # robot.respond /(broadcast)/, (msg) ->
-  #   robot.adapter.command('names')
+  # Testing UserListing to see if I can write a broadcast command (like a broadcast)
+  # I want mumbot to simply reply with a list of user names from the testing channel.
+  robot.respond /(broadcast)/, (msg) ->
+    robot.adapter.command('names')
 
   # Respond to questions.
   robot.respond /(will|can|are) you (.*)/i, (msg) ->
