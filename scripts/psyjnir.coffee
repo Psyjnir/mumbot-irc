@@ -66,26 +66,26 @@ module.exports = (robot) ->
       msg.reply msg.random responses
 
   # Respond to "good shit"
-  robot.hear /(good shit)/i, (msg) ->
-    msg.send "👌👀👌👀👌👀👌👀👌👀 good shit go౦ԁ sHit👌 thats ✔ some good👌👌shit right👌👌there👌👌👌 right✔there ✔✔if i do ƽaү so my self 💯 i say so 💯 thats what im talking about right there right there (chorus: ʳᶦᵍʰᵗ ᵗʰᵉʳᵉ) mMMMMᎷМ💯 👌👌 👌НO0ОଠOOOOOОଠଠOoooᵒᵒᵒᵒᵒᵒᵒᵒᵒ👌 👌👌 👌 💯 👌 👀 👀 👀 👌👌Good shit"
+  robot.hear /(good shit good shit)/i, (msg) ->
+    msg.send "👌👀👌👀👌👀👌👀👌👀 good shit go౦ԁ sHit 👌 thats ✔ some good 👌👌 shit right 👌👌 there 👌👌👌💯 right ✔ there ✔✔ if i do ƽaү so my self 💯 i say so 💯 thats what im talking about right there right there (chorus: ʳᶦᵍʰᵗ ᵗʰᵉʳᵉ) mMMMMᎷМ 💯👌👌👌 НO0ОଠOOOOOОଠଠOoooᵒᵒᵒᵒᵒᵒᵒᵒᵒ 👌👌👌👌💯👌👀👀👀👌👌 Good shit"
 
   # Respond to "bad shit"
-  robot.hear /(bad shit)/i, (msg) ->
-    msg.send "do NOT sign me the FUCK up 👎👀👎👀👎👀👎👀👎👀 bad shit ba̷̶ ԁ sHit 👎 thats ❌ some bad 👎👎shit ❌ ❌ if i do ƽaү so my selｆ🚫 i say so 🚫 thats not what im talking about right there right there (chorus: ʳᶦᵍʰᵗ ᵗʰᵉʳᵉ) mMMMMᎷМ 🚫 👎 👎👎НO0ОଠＯOOＯOОଠଠOoooᵒᵒᵒᵒᵒᵒᵒᵒᵒ 👎 👎👎 👎 🚫 👎 👀 👀 👀 👎👎Bad shit"
+  robot.hear /(bad shit bad shit)/i, (msg) ->
+    msg.send "👎👀👎👀👎👀👎👀👎👀 bad shit ba̷̶ ԁ sHit 👎 thats ❌ some bad 👎👎 shit right ❌❌ there 🚫🚫🚫💯 Bad shit"
 
   # Respond to "bull shit"
   robot.hear /(bullshit|bull shit)/i, (msg) ->
-    msg.send "💩🐃💩🐃💩🐃💩🐃💩🐃 bull shit bull sHit💩 thats ✔ some bull💩💩shit right💩💩th 💩 ere💩💩💩 right✔there ✔✔if i do ƽaү so my selｆ ‼️ i say so ‼️ thats what im talking about right there right there (chorus: ʳᶦᵍʰᵗ ᵗʰᵉʳᵉ) mMMMMᎷМ‼️ 💩💩 💩HO0ОଠＯOOＯOОଠଠOoooᵒᵒᵒᵒᵒᵒᵒᵒᵒ💩 💩💩 💩 ‼️ 💩 🐃 🐃 🐃 💩💩Bull shit"
+    msg.send "💩🐃💩🐃💩🐃💩🐃💩🐃 bull shit buLl sHit 💩 thats ✔ some bull 💩💩 shit right 💩💩 there 💩💩💩💯 Bull shit"
 
   # Respond to "spooky shit"
-  robot.hear /(spooky shit)/i, (msg) ->
-    responses = ["3spooky5me", "🎃👻🎃👻🎃👻👻👻🎃👻 spooky shit spooky sHit🎃 thats ✔ some spooky🎃🎃shit right🎃🎃th 🎃 ere🎃🎃🎃 ✔✔if i do ƽaү so my selｆ 💯 i say so 💯 thats what im talking about right there right there (chorus: ʳᶦᵍʰᵗ ᵗʰᵉʳᵉ) mMMMMᎷМ💯 🎃🎃 🎃НO0ОଠＯOOＯOОଠଠOoooᵒᵒᵒᵒᵒᵒᵒᵒᵒ🎃 🎃 🎃 🎃 💯 🎃 👻👻 👻 🎃🎃spooky shit"]
+  robot.hear /(spooky shit spooky shit)/i, (msg) -> 
+    responses = ["3spooky5me", "🎃👻🎃👻🎃👻👻👻🎃👻 spooky shit spOoKy sHit 🎃🎃💯thats ✔ some spooky 🎃🎃 shit right 🎃🎃 there 🎃🎃🎃💯 Spooky shit"]
 
     msg.send msg.random responses
 
   # Respond to "weird shit"
-  robot.hear /(weird shit)/i, (msg) ->
-    responses = ["Weeeeeeeird science!", "💩 👌 💩 👌 💩 👌 💩 👌 weird shit weEiRd sHit 👌 👌 💯 thats ✔ some weird 💩 shit right 🎷🐴there🎷🐴 🎷🐴", "Spongebob has been and will always be my favorite cartoon show."]
+  robot.hear /(weird shit weird shit)/i, (msg) ->
+    responses = ["Weeeeeeeird science!", "💩👌💩👌💩👌💩👌 weird shit weEiRd sHit 👌👌💯 thats ✔ some weird 🎷🐴 shit right 🎷🐴 there 🎷🐴 🎷🐴💯 Weird shit", "Spongebob has been and will always be my favorite cartoon show."]
 
     msg.send msg.random responses
 
