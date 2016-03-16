@@ -14,7 +14,7 @@
 
 module.exports = (robot) ->
   # Respond to questions.
-  robot.respond /(What is your git hash?)/i, (msg) ->
+  robot.respond /(test deploy)/i, (msg) ->
     answer = process.env.GIT_REV
     unless answer?
       msg.send "You cannot handle my git hash, my test vars are too strong for you!!!"
