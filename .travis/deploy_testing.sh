@@ -10,8 +10,8 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   exit 0
 fi
 
-if [ "$TRAVIS_BRANCH" == "master" ]; then
-  echo "NOTE: Testing master merge branch, not continuing."
+if [ "$TRAVIS_BRANCH" != "master" ]; then
+  echo "NOTE: Pull-Request branch, not continuing."
   exit 0
 fi
   
