@@ -16,8 +16,9 @@ GitHubAPI = require 'github'
 
 module.exports = (robot) ->
   development = process.env.GIT_REV
+  robot.brain.set 'deployed', false
+  
   robot.respond /(check deployment)/i, (msg) ->
-    # On boot, let Github know we've booted
     deployed = robot.brain.get('deployed') or false
     if development and not deployed
       github = new GitHubAPI(version: '3.0.0')
