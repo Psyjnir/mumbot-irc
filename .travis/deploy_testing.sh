@@ -13,4 +13,4 @@ fi
 
   
 echo "NOTE: Pushing to Test!"
-git push testing master --force
+git push testing HEAD:master --force
