@@ -5,5 +5,5 @@ ssh-add .travis/travis_rsa
 
 git config --global push.default simple
 git remote add deploy "${DEPLOY_LOCATION}"
-echo "Deploying to Production"
+echo "NOTE: Deploying to Production"
 git push deploy master

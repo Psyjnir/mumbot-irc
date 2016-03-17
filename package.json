@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "cheerio": "0.10.7",
+    "github": "^0.2.4",
     "hubot": "^2.16.0",
     "hubot-google-images": "^0.2.5",
     "hubot-google-translate": "^0.2.0",
