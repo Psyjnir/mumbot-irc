@@ -20,7 +20,7 @@ module.exports = (robot) ->
   
   robot.respond /(check deployment)/i, (msg) ->
     deployed = robot.brain.get('deployed') or false
-    if development and not deployed
+    if development and (deployed is false)
       github = new GitHubAPI(version: '3.0.0')
       github.authenticate
         type: 'oauth'
@@ -33,7 +33,7 @@ module.exports = (robot) ->
         else
           msg.send "Deploy uncertain. Response: " + JSON.stringify(err)
           
-    else if development and deployed
+    else if development and (deployed is true)
       msg.send "Deploy already complete!"
       
     else
