@@ -27,7 +27,7 @@ module.exports = (robot) ->
       github.statuses.create { user:'Psyjnir', repo:'mumbot-irc', sha:development, state:'success', context:'Mumbot-test', description:'Mumbot-test up and running'}, (err, res) ->
         if not err
           robot.brain.set 'deployed', true
-          msg.send "Deploy complete! Github notified. Response: " + res
+          msg.send "Deploy complete! Github notified."
         else
           msg.send "Deploy uncertain. Response: " + JSON.stringify(err)
     
