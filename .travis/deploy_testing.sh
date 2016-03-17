@@ -11,6 +11,5 @@ if [ "$TRAVIS_BRANCH" == "master" ]; then
   exit 0
 fi
 
-  
-echo "NOTE: Pushing to Test!"
+echo "NOTE: Pushing $TRAVIS_BRANCH to Test!"
 git push testing HEAD:master --force
