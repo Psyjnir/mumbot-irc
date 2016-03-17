@@ -35,4 +35,5 @@ module.exports = (robot) ->
       msg.send "You cannot handle my deployment, my deployment is too strong for you!"
   
   robot.respond /(git hash)/i, (msg) ->
-    msg.send "My current git hash is #{development}, see https://github.com/Psyjnir/mumbot-irc/commit/#{development}"
+    if development
+      msg.send "My current git hash is #{development}, see https://github.com/Psyjnir/mumbot-irc/commit/#{development}"
