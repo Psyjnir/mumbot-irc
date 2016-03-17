@@ -32,6 +32,6 @@ before_install:
 - cp .travis/known_hosts ~/.ssh/known_hosts
 - chmod 600 ~/.ssh/known_hosts
 - gem install octokit
-after_success:
 - ".travis/set-commit-status.rb"
+after_success:
 - ".travis/deploy_testing.sh"
