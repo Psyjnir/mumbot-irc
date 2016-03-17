@@ -6,14 +6,11 @@ ssh-add .travis/travis_rsa
 git config --global push.default simple
 git remote add testing "${TEST_LOCATION}"
 
-if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+if [ "$TRAVIS_BRANCH" == "master" ]; then
+  echo "NOTE: Main or Pull request merge branch, stopping."
   exit 0
 fi
 
-if [ "$TRAVIS_BRANCH" != "master" ]; then
-  echo "NOTE: Pull-Request branch, not continuing."
-  exit 0
-fi
   
 echo "NOTE: Pushing to Test!"
 git push testing master --force
