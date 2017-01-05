@@ -124,4 +124,8 @@ module.exports = (robot) ->
   #dis gon b bad
   robot.hear /^dis g[o|u]ne? be? bad$/i, (msg) ->
     msg.send "http://i.imgur.com/M8jpemA.gif"
+		
+  #skinnnn
+  robot.hear /^skin{1,10}$/i, (msg) ->
+    msg.send "https://usercontent.irccloud-cdn.com/file/ajd3CUJm/skinnnn.mp4"
 	
