@@ -24,7 +24,7 @@ module.exports = (robot) ->
   #   robot.adapter.command('names')
 
   # Respond to questions.
-  robot.respond /(will|can|are) you (.*)/i, (msg) ->
+  robot.respond /(will|can|are|would|could) you (.*)/i, (msg) ->
     responses = ['Yes!', 'Wat', 'Of course!', 'Maybe...send pix', 'A thousand times, yes!', 'You know our motto!', 'Get away from me.', 'Uh no', 'NEVER', 'Wow so brave', 'I blame Djof', 'I blame babu', 'They always do', 'Your light is not enough, Guardian', 'I\'ve awoken the Hive!', 'I don\'t have time to explain why I don\'t have time to explain.']
 
     msg.send msg.random responses
@@ -118,10 +118,10 @@ module.exports = (robot) ->
     msg.send "¯\\_(ツ)_/¯"
 	
   #dis gon b gud
-  robot.hear /^dis gon b gud$/i, (msg) ->
+  robot.hear /^dis g[o|u]ne? be? g(u|oo)d$/i, (msg) ->
     msg.send "http://i.imgur.com/NnoGhN1.gif"
 	
   #dis gon b bad
-  robot.hear /^dis gon b bad$/i, (msg) ->
+  robot.hear /^dis g[o|u]ne? be? bad$/i, (msg) ->
     msg.send "http://i.imgur.com/M8jpemA.gif"
 	
