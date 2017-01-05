@@ -106,11 +106,11 @@ module.exports = (robot) ->
     msg.send msg.random responses
 	
   # Respond to "wrong"
-  robot.hear /[^]wrong[$]/i, (msg) ->
+  robot.hear /^wrong$/i, (msg) ->
     msg.send "http://i.imgur.com/Nf3dGKJ.gif"
 	
   #lenny
-  robot.hear /[^]lennyface[$]/i, (msg) ->
+  robot.hear /^lennyface$/i, (msg) ->
     msg.send "( ͡° ͜ʖ ͡°)"
 	
   #shrug emote
