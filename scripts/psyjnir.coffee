@@ -107,7 +107,7 @@ module.exports = (robot) ->
 	
   # Respond to "wrong"
   robot.hear /^wrong$/i, (msg) ->
-    msg.send "http://i.imgur.com/Nf3dGKJ.gif"
+    msg.send "http://hobbyte.org/wrong_small.gif"
 	
   #lenny
   robot.hear /^lennyface$/i, (msg) ->
