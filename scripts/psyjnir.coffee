@@ -115,13 +115,13 @@ module.exports = (robot) ->
 	
   #dis gon b gud
   robot.hear /^dis g[o|u]ne? be? g(u|oo)d$/i, (msg) ->
-    msg.send "http://i.imgur.com/NnoGhN1.gif"
+    msg.send "http://alternatehobbyte.org/gud.gif"
 	
   #dis gon b bad
   robot.hear /^dis g[o|u]ne? be? bad$/i, (msg) ->
-    msg.send "http://i.imgur.com/M8jpemA.gif"
+    msg.send "http://alternatehobbyte.org/bad.gif"
 		
   #skinnnn
   robot.hear /^skin{1,10}$/i, (msg) ->
-    msg.send "https://usercontent.irccloud-cdn.com/file/ajd3CUJm/skinnnn.mp4"
+    msg.send "http://alternatehobbyte.org/skinnnn.mp4"
 	
