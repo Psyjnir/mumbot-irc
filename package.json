@@ -29,7 +29,7 @@
     "hubot-help": "^0.1.3",
     "hubot-irc": "git://github.com/nandub/hubot-irc#51d1f4b",
     "hubot-markov": "https://github.com/cbpowell/hubot-markov/tarball/master",
-    "hubot-mumbler": "https://github.com/cbpowell/hubot-mumbler/tarball/master",
+    "hubot-mumbler": "https://github.com/cbpowell/hubot-discorder/tarball/master",
     "hubot-pugme": "^0.1.0",
     "hubot-redis-brain": "0.0.3",
     "hubot-rules": "^0.1.1",
