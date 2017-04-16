@@ -1,6 +1,6 @@
 [
     "hubot-markov",
-    "hubot-mumbler",
+    "hubot-discorder",
     "hubot-google-images",
     "hubot-redis-brain",
     "hubot-shipit",
