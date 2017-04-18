@@ -24,8 +24,8 @@ module.exports = (robot) ->
   #   robot.adapter.command('names')
 
   # Respond to questions.
-  robot.respond /(will|can|are) you (.*)/i, (msg) ->
-    responses = ['Yes!', 'Wat', 'Of course!', 'Maybe...send pix', 'A thousand times, yes!', 'You know our motto!', 'Get away from me.', 'Uh no', 'NEVER', 'Wow so brave', 'I blame Djof', 'I blame baboo', 'They always do', 'Your light is not enough, Guardian', 'I\'ve awoken the Hive!', 'I don\'t have time to explain why I don\'t have time to explain.']
+  robot.respond /(will|can|are|would|could) you (.*)/i, (msg) ->
+    responses = ['Yes!', 'Wat', 'Of course!', 'Maybe...send pix', 'A thousand times, yes!', 'You know our motto!', 'Get away from me.', 'Uh no', 'NEVER', 'Wow so brave', 'I blame Djof', 'I blame babu', 'They always do', 'Your light is not enough, Guardian', 'I\'ve awoken the Hive!', 'I don\'t have time to explain why I don\'t have time to explain.']
 
     msg.send msg.random responses
     
@@ -36,7 +36,7 @@ module.exports = (robot) ->
     msg.send msg.random responses
     
   # Respond to "remember when"
-  robot.hear /(^|\W)remember when(\z|\W|$)/i, (msg) ->
+  robot.hear /(^)remember when(\z|\W|$)/i, (msg) ->
     responses = ['No', 'That has never happened', 'Who are you, Hobbyte?', 'I remember when you could call a magazine a clip', 'I remember when Sepiks Prime cast a great shadow over our city', 'Remember when you used to play games with us?']
     
     msg.send msg.random responses
@@ -49,7 +49,7 @@ module.exports = (robot) ->
     msg.emote "locks on to #{targetUser} and " + msg.random responses
 
   # Respond when people talk about Pizza or Supreme Commander with Sorian AI Quotes
-  robot.hear /(pizza|supreme commander|faf|forged alliance forever|2v2|pvpizza|sorian)/i, (msg) ->
+  robot.hear /(^pizza|^supreme commander|^supcom|^faf|^forged alliance forever|^pvpizza|^sorian)/i, (msg) ->
     responses = ['I hope you weren\'t getting used to being alive.', 'Now, you guys play nice with my pet.', 'I\'m sending a playmate for you.', 'I\'ve Got a surprise for ya!', 'Next time, your mine.', 'I was going easy on you, noob.', 'I\'ll get you next time.', 'New map please. Preferably one with markers.', 'Um, can we play on a map with markers?', 'I guess failure runs in your family.', 'Looks like some remedial training is in order.']
 
     msg.send msg.random responses
@@ -74,7 +74,7 @@ module.exports = (robot) ->
     msg.send "👎👀👎👀👎👀👎👀👎👀 bad shit ba̷̶ ԁ sHit 👎 thats ❌ some bad 👎👎 shit right ❌❌ there 🚫🚫🚫💯 Bad shit"
 
   # Respond to "bull shit"
-  robot.hear /(bullshit|bull shit)/i, (msg) ->
+  robot.hear /(^bullshit|^bull shit)/i, (msg) ->
     msg.send "💩🐃💩🐃💩🐃💩🐃💩🐃 bull shit buLl sHit 💩 thats ✔ some bull 💩💩 shit right 💩💩 there 💩💩💩💯 Bull shit"
 
   # Respond to "spooky shit"
@@ -94,3 +94,34 @@ module.exports = (robot) ->
     responses = ["I'm a knife ... Knifin' Around ... cut cut cut cut cut cut cut cut cut cut hmmm cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut cut", "But I will put anything in to my mouth that is given to me - whether it's supposed to go there or not - because... I'm different.", "I buried a present for you out in the yard... why don't you go dig it up."]
 
     msg.send msg.random responses
+	
+  # Respond to "gh"
+  robot.hear /(^|\W)gh(\W|$)/i, (msg) ->
+    msg.send "🇬🇭"
+	
+  # Respond to "repost"
+  robot.hear /^repost$/i, (msg) ->
+    responses = ["http://i.imgur.com/P8MhFTn.gifv", "https://i.imgur.com/1VJ5QVU.gifv"]
+
+    msg.send msg.random responses
+	
+  #lenny
+  robot.hear /^lennyface$/i, (msg) ->
+    msg.send "( ͡° ͜ʖ ͡°)"
+	
+  #shrug emote
+  robot.hear /(^shrug$|^i dunno$|^dunno$|^idk$)/i, (msg) ->
+    msg.send "¯\\_(ツ)_/¯"
+	
+  #dis gon b gud
+  robot.hear /^dis g[o|u]ne? be? g(u|oo)d$/i, (msg) ->
+    msg.send "http://alternatehobbyte.org/gud.gif"
+	
+  #dis gon b bad
+  robot.hear /^dis g[o|u]ne? be? bad$/i, (msg) ->
+    msg.send "http://alternatehobbyte.org/bad.gif"
+		
+  #skinnnn
+  robot.hear /^skin{1,10}$/i, (msg) ->
+    msg.send "http://alternatehobbyte.org/skinnnn.mp4"
+	
