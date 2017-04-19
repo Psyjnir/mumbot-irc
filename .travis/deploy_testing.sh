@@ -1,6 +1,6 @@
 #!/bin/bash 
 if [ "$TRAVIS_BRANCH" == "master" ]; then
-  echo "NOTE: Main or Pull request merge branch, stopping."
+  echo "NOTE: Main or Pull Request merge branch, stopping deploy to test."
   exit 0
 fi
 
