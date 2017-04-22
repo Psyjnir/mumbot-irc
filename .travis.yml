@@ -11,6 +11,8 @@ env:
 sudo: required
 dist: trusty
 addons:
+  ssh_known_hosts:
+    github.com
   apt:
     sources:
     - ubuntu-toolchain-r-test
