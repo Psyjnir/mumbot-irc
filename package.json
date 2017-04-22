@@ -25,7 +25,7 @@
     "ffmpeg-binaries": "^3.2.2-3",
     "github": "^0.2.4",
     "hubot": "^2.16.0",
-    "hubot-discorder": "github:cbpowell/hubot-discorder#0.1.2",
+    "hubot-discorder": "cbpowell/hubot-discorder#0.1.2",
     "hubot-google-images": "^0.2.5",
     "hubot-google-translate": "^0.2.0",
     "hubot-help": "^0.1.3",
