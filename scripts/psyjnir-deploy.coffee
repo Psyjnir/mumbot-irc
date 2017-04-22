@@ -17,7 +17,7 @@ GitHubAPI = require 'github'
 module.exports = (robot) ->
   development = process.env.GIT_REV
   robot.enter (res) ->
-    if development and (res.user.name is robot.name)
+    if development
       github = new GitHubAPI(version: '3.0.0')
       github.authenticate
         type: 'oauth'
