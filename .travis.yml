@@ -11,6 +11,8 @@ env:
 sudo: required
 dist: trusty
 addons:
+  ssh_known_hosts:
+    github.com
   apt:
     sources:
     - ubuntu-toolchain-r-test
@@ -33,5 +35,7 @@ before_install:
 - chmod 600 ~/.ssh/known_hosts
 - gem install octokit
 - ".travis/set-commit-status.rb"
+install:
+- ".travis/install.sh"
 after_success:
 - ".travis/deploy_testing.sh"
