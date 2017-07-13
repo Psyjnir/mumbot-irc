@@ -31,7 +31,8 @@ module.exports = (robot) ->
           res.send "Deploy uncertain. Response: " + JSON.stringify(err)
   
     else
-      robot.messageRoom process.env.HUBOT_DISCORDER_ANNOUNCE_ROOMS, "You cannot handle my deployment, my deployment is too strong for you!"
+      if res.message.user.name is robot.name
+        robot.messageRoom process.env.HUBOT_DISCORDER_ANNOUNCE_ROOMS, "You cannot handle my deployment, my deployment is too strong for you!"
   
   robot.respond /(git hash)/i, (msg) ->
     if development
