@@ -28,7 +28,7 @@ module.exports = (robot) ->
     
       github.statuses.create { user:'Psyjnir', repo:'mumbot-irc', sha:development, state:'success', context:'Mumbot-test', description:'Mumbot-test up and running'}, (err, res) ->
         if not err
-          robot.logger.debug "Successfull deployed"
+          robot.logger.debug "Successfull deployment"
           robot.brain.set 'deployed', true
           robot.messageRoom process.env.HUBOT_DISCORDER_ANNOUNCE_ROOMS, "Deploy complete! Github notified."
         else

@@ -5,9 +5,9 @@ env:
   matrix:
   - CXX=g++-4.8
   global:
-  - secure: jafgXlak8pS5iDRbF43c/flx4JkKoXl200oI4Pl/60jq2QKa9mb6kgLZainMkDGp7dDPcUiFvvr5sdYMsIeU8pClZjvDobu4UVSRKQqMbmUKIS7PxjDFAcRRMjKZvTZDe0G/l83I4eVWy1v64VwNs+CbM69PVsted8IKpwq2vbc=
-  - secure: FzWkAQ8K1jUSc1m1sUu+CKQQgp7IruolAFaFUMgShYHIbxuJ3lLWUKKfM+PheX/UMoxPY+um2Ul/dYl5hOuw9qog08td1pF9FOkUYsH4UpDpegqMh6SopnwOPCfx2E7aZcoY44YrwngSNq8nDa4KvezSRYkCN6PD0USRqTckW6k=
-  - secure: e/ikkmb6R1RuaZb4Vvg9BiKHnw/ESpfUnl1tMxweFdaPKqCBF0rb7so9+G2ud7PO+25ZMV+wErRSgumpur36Hdev/xDsxhCKahu9wmERkOWoG9Vnd2UzhoAZCH4IaA57Trf1gmuflVo5GPyuAiND5yJHHtPPrWw/ebjjJuSn8f0=
+  - secure: VtgP3E8iDxKbTRB7wboW7eClVCvY09OxwnKjpeKjCWoY6Ca/DrdDmwO6eqXRh3GCJ9fyaOs5DVbZgD9IUWTlZoKSpwURKIjZxrzzKjUpUZ7g/LN8CeQ2TDHpR1fuLLAk1rG4xdfE2Lv1O+jZuoIo4awgxprEnk7IvvLOw9LBIlk=
+  - secure: RH9mD5I7QQNXX/VIeUoVYkwOX5onDOAm3azHLqhmggj7LtY3r3FrYq5mnRovZrI9A5C7omVFvEd4M36u9HXUL0JJ0Ia7rik/vv91NeZm1GWSzlEhQBat5ExvHbbPZDY3F7YCCJvb1RuspBUxIa77XW2EF4TjokBzlMpnCpFbvy8=
+  - secure: Tzm+RXQmTnj91TyEEgj2fm8ZUbY58wq5FjTSivUrIsbWgtP0JTk6dZc9GSVSAmBkwt3/ogNKRajSSTLhRDa2HHsHUyOtAGH67z0fcLGEl0PHYEoIMzWYfnVHIOEaNrQfJSUertMjsrO45e1hdWaEd6gSuDcoAUUpv77idix5yxA=
 sudo: required
 dist: trusty
 addons:
