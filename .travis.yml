@@ -5,14 +5,13 @@ env:
   matrix:
   - CXX=g++-4.8
   global:
-  - secure: ZC7U9902Jw4QQD1FlSq3hGIqtJq0OxOi7ReP7s/i2cxXlhMktksVkne/9wM60oQUrGlesbiXS5atlZFhwEml7dTgxpEs3bo7T/AWDxMkxynFuwLp2SOjRGqvMghCh7ZASTDKjbVR9f2slny/4rpyiu9KulwxEJ4uh4sqj74Nh4o=
-  - secure: Tp1bJShbt5pS7WlYe6sM0A/HXkRKGyJJfllSV61C4Bwgro7It32gKQnnXPNpNUt1P6oYZ575CVqAtPvD7chxWkjaKo0PW5zmjW92nJ9Hn3tpP5zLC0CQ4KrMXR3dYS38xMn6FQoL8eXRpPD5+FxupUS7BuQmwqYVvtW79S4k60o=
-  - secure: GDlFIn6Ldt3nVy0Q9mit97C7JJh00DUqZ29Bu5CCWYRTSskrbepBSOHiNvnFINRMyJviBS/rWcSzSPnhvX2n7M0OjTmAkcSnxEDcoYMCtGtNVQJS5RTcq/gPwWIF0MuyI8YsPCw50dvgFSMvoKe+01WB/YkhXhDMooPDOifb/jU=
+  - secure: jafgXlak8pS5iDRbF43c/flx4JkKoXl200oI4Pl/60jq2QKa9mb6kgLZainMkDGp7dDPcUiFvvr5sdYMsIeU8pClZjvDobu4UVSRKQqMbmUKIS7PxjDFAcRRMjKZvTZDe0G/l83I4eVWy1v64VwNs+CbM69PVsted8IKpwq2vbc=
+  - secure: FzWkAQ8K1jUSc1m1sUu+CKQQgp7IruolAFaFUMgShYHIbxuJ3lLWUKKfM+PheX/UMoxPY+um2Ul/dYl5hOuw9qog08td1pF9FOkUYsH4UpDpegqMh6SopnwOPCfx2E7aZcoY44YrwngSNq8nDa4KvezSRYkCN6PD0USRqTckW6k=
+  - secure: e/ikkmb6R1RuaZb4Vvg9BiKHnw/ESpfUnl1tMxweFdaPKqCBF0rb7so9+G2ud7PO+25ZMV+wErRSgumpur36Hdev/xDsxhCKahu9wmERkOWoG9Vnd2UzhoAZCH4IaA57Trf1gmuflVo5GPyuAiND5yJHHtPPrWw/ebjjJuSn8f0=
 sudo: required
 dist: trusty
 addons:
-  ssh_known_hosts:
-    github.com
+  ssh_known_hosts: github.com
   apt:
     sources:
     - ubuntu-toolchain-r-test
