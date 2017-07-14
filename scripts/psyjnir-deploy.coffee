@@ -15,6 +15,8 @@
 GitHubAPI = require 'github'
 
 module.exports = (robot) ->
+  # Depends on the below Dokku plugin, or similar, to get GIT_REV env var
+  # https://github.com/cjblomqvist/dokku-git-rev
   development = process.env.GIT_REV
   robot.enter (res) ->
     if development
