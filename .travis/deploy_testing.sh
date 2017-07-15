@@ -12,4 +12,4 @@ git config --global push.default simple
 git remote add testing "${TEST_LOCATION}"
 
 echo "NOTE: Pushing $TRAVIS_BRANCH to Test!"
-git push testing HEAD:master --force
+git push testing HEAD:master --force | awk '/([0-9a-z]{7}\.\.[0-9a-z]{7})|(fatal)/ { print }'

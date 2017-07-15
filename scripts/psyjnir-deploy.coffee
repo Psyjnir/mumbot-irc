@@ -15,9 +15,12 @@
 GitHubAPI = require 'github'
 
 module.exports = (robot) ->
+  # Depends on the below Dokku plugin, or similar, to get GIT_REV env var
+  # https://github.com/cjblomqvist/dokku-git-rev
   development = process.env.GIT_REV
   robot.enter (res) ->
     if development
+      robot.logger.debug "Attempting to set deployment with hash #{development}"
       github = new GitHubAPI(version: '3.0.0')
       github.authenticate
         type: 'oauth'
@@ -25,14 +28,20 @@ module.exports = (robot) ->
     
       github.statuses.create { user:'Psyjnir', repo:'mumbot-irc', sha:development, state:'success', context:'Mumbot-test', description:'Mumbot-test up and running'}, (err, res) ->
         if not err
+          robot.logger.debug "Successfull deployment"
           robot.brain.set 'deployed', true
-          res.send "Deploy complete! Github notified."
+          robot.messageRoom process.env.HUBOT_DISCORDER_ANNOUNCE_ROOMS, "Deploy complete! Github notified."
         else
-          res.send "Deploy uncertain. Response: " + JSON.stringify(err)
+          errorMsg = JSON.stringify(err)
+          robot.logger.debug "Deploy failed with error: #{errorMsg}"
+          robot.messageRoom process.env.HUBOT_DISCORDER_ANNOUNCE_ROOMS, "Deploy uncertain. Response: " + errorMsg
   
     else
-      robot.messageRoom process.env.HUBOT_DISCORDER_ANNOUNCE_ROOMS, "You cannot handle my deployment, my deployment is too strong for you!"
+      if res.message.user.name is robot.name
+        robot.messageRoom process.env.HUBOT_DISCORDER_ANNOUNCE_ROOMS, "You cannot handle my deployment, my deployment is too strong for you!"
   
-  robot.respond /(git hash)/i, (msg) ->
+  robot.hear /(^git hash$)/i, (msg) ->
     if development
       msg.send "My current git hash is #{development}, see https://github.com/Psyjnir/mumbot-irc/commit/#{development}"
+    else
+      msg.send "No git hash currently set"
