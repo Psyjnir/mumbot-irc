@@ -18,6 +18,13 @@ module.exports = (robot) ->
   # Depends on the below Dokku plugin, or similar, to get GIT_REV env var
   # https://github.com/cjblomqvist/dokku-git-rev
   development = process.env.GIT_REV
+  
+  robot.hear /(git hash$)/i, (msg) ->
+    if development
+      msg.send "My current git hash is #{development}, see https://github.com/Psyjnir/mumbot-irc/commit/#{development}"
+    else
+      msg.send "No git hash currently set"
+      
   robot.enter (res) ->
     if res.message.user.name is not robot.name
       robot.logger.debug "Join event is not the robot"
@@ -48,6 +55,7 @@ module.exports = (robot) ->
         # Shut down after specified time
         robot.logger.info "NOTICE: App will shutdown after #{process.env.TEST_TIMEOUT} ms"
         setTimeout (->
+          robot.messageRoom process.env.HUBOT_IRC_ROOMS, "Test time finished. Shutting down."
           robot.logger.info "NOTICE: Test timeout reached, shutting down with exit code 0"
           process.exit(0)
         ), process.env.TEST_TIMEOUT
@@ -55,9 +63,3 @@ module.exports = (robot) ->
       
     else
       robot.messageRoom process.env.HUBOT_IRC_ROOMS, "You cannot handle my deployment, my deployment is too strong for you!"
-  
-  robot.hear /(^git hash$)/i, (msg) ->
-    if development
-      msg.send "My current git hash is #{development}, see https://github.com/Psyjnir/mumbot-irc/commit/#{development}"
-    else
-      msg.send "No git hash currently set"
