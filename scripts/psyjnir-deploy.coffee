@@ -43,6 +43,16 @@ module.exports = (robot) ->
           errorMsg = JSON.stringify(err)
           robot.logger.debug "Deploy failed with error: #{errorMsg}"
           robot.messageRoom process.env.HUBOT_IRC_ROOMS, "Deploy uncertain. Response: " + errorMsg
+          
+      if process.env.TEST_TIMEOUT
+        # Shut down after specified time
+        robot.logger.info "NOTICE: App will shutdown after #{process.env.TEST_TIMEOUT} ms"
+        setTimeout (->
+          robot.logger.info "NOTICE: Test timeout reached, shutting down with exit code 0"
+          process.exit(0)
+        ), process.env.TEST_TIMEOUT
+        return
+      
     else
       robot.messageRoom process.env.HUBOT_IRC_ROOMS, "You cannot handle my deployment, my deployment is too strong for you!"
   
