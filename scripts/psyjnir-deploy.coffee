@@ -20,11 +20,14 @@ module.exports = (robot) ->
   development = process.env.GIT_REV
   robot.enter (res) ->
     if res.message.user.name is not robot.name
+      robot.logger.debug "Join event is not the robot"
       return
       
     if development
       if not process.env.GITHUB_STATUS_TOKEN
+        robot.logger.debug "Robot joined, but no Github status token is set (probably on Production)"
         return
+        
       robot.logger.debug "Attempting to set deployment with hash #{development}"
       github = new GitHubAPI(version: '3.0.0')
       github.authenticate
@@ -35,14 +38,13 @@ module.exports = (robot) ->
         if not err
           robot.logger.debug "Successfull deployment"
           robot.brain.set 'deployed', true
-          robot.messageRoom process.env.HUBOT_DISCORDER_ANNOUNCE_ROOMS, "Deploy complete! Github notified."
+          robot.messageRoom process.env.HUBOT_IRC_ROOMS, "Deploy complete! Github notified."
         else
           errorMsg = JSON.stringify(err)
           robot.logger.debug "Deploy failed with error: #{errorMsg}"
-          robot.messageRoom process.env.HUBOT_DISCORDER_ANNOUNCE_ROOMS, "Deploy uncertain. Response: " + errorMsg
-  
+          robot.messageRoom process.env.HUBOT_IRC_ROOMS, "Deploy uncertain. Response: " + errorMsg
     else
-      robot.messageRoom process.env.HUBOT_DISCORDER_ANNOUNCE_ROOMS, "You cannot handle my deployment, my deployment is too strong for you!"
+      robot.messageRoom process.env.HUBOT_IRC_ROOMS, "You cannot handle my deployment, my deployment is too strong for you!"
   
   robot.hear /(^git hash$)/i, (msg) ->
     if development
