@@ -19,7 +19,12 @@ module.exports = (robot) ->
   # https://github.com/cjblomqvist/dokku-git-rev
   development = process.env.GIT_REV
   robot.enter (res) ->
+    if res.message.user.name is not robot.name
+      return
+      
     if development
+      if not process.env.GITHUB_STATUS_TOKEN
+        return
       robot.logger.debug "Attempting to set deployment with hash #{development}"
       github = new GitHubAPI(version: '3.0.0')
       github.authenticate
@@ -37,8 +42,7 @@ module.exports = (robot) ->
           robot.messageRoom process.env.HUBOT_DISCORDER_ANNOUNCE_ROOMS, "Deploy uncertain. Response: " + errorMsg
   
     else
-      if res.message.user.name is robot.name
-        robot.messageRoom process.env.HUBOT_DISCORDER_ANNOUNCE_ROOMS, "You cannot handle my deployment, my deployment is too strong for you!"
+      robot.messageRoom process.env.HUBOT_DISCORDER_ANNOUNCE_ROOMS, "You cannot handle my deployment, my deployment is too strong for you!"
   
   robot.hear /(^git hash$)/i, (msg) ->
     if development
