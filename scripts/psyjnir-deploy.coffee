@@ -57,7 +57,9 @@ module.exports = (robot) ->
         setTimeout (->
           robot.messageRoom process.env.HUBOT_IRC_ROOMS, "Test time finished. Shutting down."
           robot.logger.info "NOTICE: Test timeout reached, shutting down with exit code 0"
-          process.exit(0)
+          setTimeout (->
+            process.exit(0)
+          ), 2000
         ), process.env.TEST_TIMEOUT
         return
       
