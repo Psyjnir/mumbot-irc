@@ -109,13 +109,13 @@ module.exports = (robot) ->
 	
   #dis gon b gud
   robot.hear /^dis g[o|u]ne? be? g(u|oo)d$/i, (msg) ->
-    msg.send "http://alternatehobbyte.org/gud.gif"
+    msg.send "http://hobbyte.org/gud.gif"
 	
   #dis gon b bad
   robot.hear /^dis g[o|u]ne? be? bad$/i, (msg) ->
-    msg.send "http://alternatehobbyte.org/bad.gif"
+    msg.send "http://hobbyte.org/bad.gif"
 		
   #skinnnn
   robot.hear /^skin{1,10}$/i, (msg) ->
-    msg.send "http://alternatehobbyte.org/skinnnn.mp4"
+    msg.send "http://hobbyte.org/skinnnn.mp4"
 	
