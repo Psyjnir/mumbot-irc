@@ -93,6 +93,10 @@ module.exports = (robot) ->
   robot.hear /(^|\W)gh(\W|$)/i, (msg) ->
     msg.send "🇬🇭"
 	
+  # Respond to "rip"
+  robot.hear /(^|\W)rip(\W|$)/i, (msg) ->
+    msg.send "F"
+	
   # Respond to "repost"
   robot.hear /^repost$/i, (msg) ->
     responses = ["http://i.imgur.com/P8MhFTn.gifv", "https://i.imgur.com/1VJ5QVU.gifv"]
