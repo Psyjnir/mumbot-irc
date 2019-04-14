@@ -62,6 +62,3 @@ module.exports = (robot) ->
           ), 2000
         ), process.env.TEST_TIMEOUT
         return
-      
-    else
-      robot.messageRoom process.env.HUBOT_IRC_ROOMS, "You cannot handle my deployment, my deployment is too strong for you!"
