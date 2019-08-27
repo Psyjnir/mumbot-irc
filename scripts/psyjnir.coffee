@@ -122,4 +122,8 @@ module.exports = (robot) ->
   #skinnnn
   robot.hear /^skin{1,10}$/i, (msg) ->
     msg.send "http://hobbyte.org/skinnnn.mp4"
+			
+  #nice
+  robot.hear /69/i, (msg) ->
+    msg.send "nice"
 	
