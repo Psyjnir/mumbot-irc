@@ -1,10 +1,10 @@
 [
     "hubot-markov",
-    "hubot-mumbler",
+    "hubot-discorder",
     "hubot-google-images",
+    "hubot-diagnostics",
     "hubot-redis-brain",
     "hubot-shipit",
-    "hubot-pugme",
     "hubot-help",
     "hubot-google-translate",
     "hubot-rules",

@@ -1,16 +1,17 @@
 language: node_js
 node_js:
-- '4'
+- '8'
 env:
   matrix:
   - CXX=g++-4.8
   global:
-  - secure: ZC7U9902Jw4QQD1FlSq3hGIqtJq0OxOi7ReP7s/i2cxXlhMktksVkne/9wM60oQUrGlesbiXS5atlZFhwEml7dTgxpEs3bo7T/AWDxMkxynFuwLp2SOjRGqvMghCh7ZASTDKjbVR9f2slny/4rpyiu9KulwxEJ4uh4sqj74Nh4o=
-  - secure: Tp1bJShbt5pS7WlYe6sM0A/HXkRKGyJJfllSV61C4Bwgro7It32gKQnnXPNpNUt1P6oYZ575CVqAtPvD7chxWkjaKo0PW5zmjW92nJ9Hn3tpP5zLC0CQ4KrMXR3dYS38xMn6FQoL8eXRpPD5+FxupUS7BuQmwqYVvtW79S4k60o=
-  - secure: GDlFIn6Ldt3nVy0Q9mit97C7JJh00DUqZ29Bu5CCWYRTSskrbepBSOHiNvnFINRMyJviBS/rWcSzSPnhvX2n7M0OjTmAkcSnxEDcoYMCtGtNVQJS5RTcq/gPwWIF0MuyI8YsPCw50dvgFSMvoKe+01WB/YkhXhDMooPDOifb/jU=
+  - secure: VtgP3E8iDxKbTRB7wboW7eClVCvY09OxwnKjpeKjCWoY6Ca/DrdDmwO6eqXRh3GCJ9fyaOs5DVbZgD9IUWTlZoKSpwURKIjZxrzzKjUpUZ7g/LN8CeQ2TDHpR1fuLLAk1rG4xdfE2Lv1O+jZuoIo4awgxprEnk7IvvLOw9LBIlk=
+  - secure: RH9mD5I7QQNXX/VIeUoVYkwOX5onDOAm3azHLqhmggj7LtY3r3FrYq5mnRovZrI9A5C7omVFvEd4M36u9HXUL0JJ0Ia7rik/vv91NeZm1GWSzlEhQBat5ExvHbbPZDY3F7YCCJvb1RuspBUxIa77XW2EF4TjokBzlMpnCpFbvy8=
+  - secure: Tzm+RXQmTnj91TyEEgj2fm8ZUbY58wq5FjTSivUrIsbWgtP0JTk6dZc9GSVSAmBkwt3/ogNKRajSSTLhRDa2HHsHUyOtAGH67z0fcLGEl0PHYEoIMzWYfnVHIOEaNrQfJSUertMjsrO45e1hdWaEd6gSuDcoAUUpv77idix5yxA=
 sudo: required
 dist: trusty
 addons:
+  ssh_known_hosts: github.com
   apt:
     sources:
     - ubuntu-toolchain-r-test
@@ -33,5 +34,7 @@ before_install:
 - chmod 600 ~/.ssh/known_hosts
 - gem install octokit
 - ".travis/set-commit-status.rb"
+install:
+- ".travis/install.sh"
 after_success:
 - ".travis/deploy_testing.sh"

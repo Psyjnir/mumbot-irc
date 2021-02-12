@@ -29,12 +29,6 @@ module.exports = (robot) ->
 
     msg.send msg.random responses
     
-  # Respond to "clip"
-  robot.hear /(^|\W)clip(\z|\W|$)/i, (msg) ->
-    responses = ['You mean clipazine', 'I believe you mean magazine', 'You mean magazine, not clip?', 'OMG IT IS A MAGAZINE']
-
-    msg.send msg.random responses
-    
   # Respond to "remember when"
   robot.hear /(^)remember when(\z|\W|$)/i, (msg) ->
     responses = ['No', 'That has never happened', 'Who are you, Hobbyte?', 'I remember when you could call a magazine a clip', 'I remember when Sepiks Prime cast a great shadow over our city', 'Remember when you used to play games with us?']
@@ -99,15 +93,15 @@ module.exports = (robot) ->
   robot.hear /(^|\W)gh(\W|$)/i, (msg) ->
     msg.send "🇬🇭"
 	
+  # Respond to "rip"
+  robot.hear /(^|\W)rip(\W|$)/i, (msg) ->
+    msg.send "F"
+	
   # Respond to "repost"
   robot.hear /^repost$/i, (msg) ->
     responses = ["http://i.imgur.com/P8MhFTn.gifv", "https://i.imgur.com/1VJ5QVU.gifv"]
 
     msg.send msg.random responses
-	
-  # Respond to "wrong"
-  robot.hear /^wrong$/i, (msg) ->
-    msg.send "http://i.imgur.com/Nf3dGKJ.gif"
 	
   #lenny
   robot.hear /^lennyface$/i, (msg) ->
@@ -119,13 +113,17 @@ module.exports = (robot) ->
 	
   #dis gon b gud
   robot.hear /^dis g[o|u]ne? be? g(u|oo)d$/i, (msg) ->
-    msg.send "http://i.imgur.com/NnoGhN1.gif"
+    msg.send "http://hobbyte.org/gud.gif"
 	
   #dis gon b bad
   robot.hear /^dis g[o|u]ne? be? bad$/i, (msg) ->
-    msg.send "http://i.imgur.com/M8jpemA.gif"
+    msg.send "http://hobbyte.org/bad.gif"
 		
   #skinnnn
   robot.hear /^skin{1,10}$/i, (msg) ->
-    msg.send "https://usercontent.irccloud-cdn.com/file/ajd3CUJm/skinnnn.mp4"
+    msg.send "http://hobbyte.org/skinnnn.mp4"
+			
+  #nice
+  robot.hear /69/i, (msg) ->
+    msg.send "nice"
 	
