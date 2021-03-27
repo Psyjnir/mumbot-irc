@@ -99,7 +99,7 @@ module.exports = (robot) ->
 	
   # Respond to "repost"
   robot.hear /^repost$/i, (msg) ->
-    responses = ["http://i.imgur.com/P8MhFTn.gifv", "https://i.imgur.com/1VJ5QVU.gifv"]
+    responses = ["http://i.imgur.com/P8MhFTn.gifv", "https://i.imgur.com/1VJ5QVU.gifv", "https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html"]
 
     msg.send msg.random responses
 	
