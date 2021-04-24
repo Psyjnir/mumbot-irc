@@ -126,12 +126,4 @@ module.exports = (robot) ->
   #nice
   robot.hear /69/i, (msg) ->
     msg.send "nice"
-				
-  #fuck instagram
-  robot.hear /instagram.com/i, (msg) ->
-    msg.send "fuck facebook"
-					
-  #fuck facebook
-  robot.hear /facebook.com/i, (msg) ->
-    msg.send "fuck facebook"
 	

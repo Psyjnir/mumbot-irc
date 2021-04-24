@@ -175,4 +175,3 @@ Add the subdomain hubot should connect to. If you web URL looks like
 
 You may want to get comfortable with `heroku logs` and `heroku restart`
 if you're having issues.
- 
