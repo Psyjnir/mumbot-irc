@@ -24,12 +24,11 @@
     "github": "^0.2.4",
     "hubot": "^3.3.2",
     "hubot-diagnostics": "^1.0.0",
-    "hubot-discorder": "git://github.com/cbpowell/hubot-discorder.git#0.1.8",
+    "hubot-discorder": "git://github.com/cbpowell/hubot-discorder.git#0.2.0-beta1",
     "hubot-google-images": "^0.2.7",
     "hubot-google-translate": "^0.2.1",
     "hubot-help": "^1.0.1",
     "hubot-irc": "^0.4.0",
-    "hubot-pugme": "^0.1.1",
     "hubot-markov": "https://github.com/cbpowell/hubot-markov/tarball/master",
     "hubot-redis-brain": "^1.0.0",
     "hubot-tell": "^1.2.4",
@@ -39,7 +38,7 @@
     "request": "2.88.0"
   },
   "engines": {
-      "node": "^14.0.0",
+      "node": "^16.6.0",
       "npm": "> 2.0.0"
   }
 }
