@@ -62,8 +62,6 @@ services:
     restart: always
     volumes:
       - redis_data:/data
-    ports:
-      - 8443:8443
     environment:
       - PGID=1000
       - PUID=1000
