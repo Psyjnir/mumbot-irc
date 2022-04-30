@@ -5,8 +5,5 @@
     "hubot-diagnostics",
     "hubot-redis-brain",
     "hubot-shipit",
-    "hubot-help",
-    "hubot-google-translate",
-    "hubot-rules",
-    "hubot-tell"
+    "hubot-rules"
 ]
