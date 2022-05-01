@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: saubermacherag/ansible-playbook-docker-action@v1.4
+      - uses: cbpowell/ansible-playbook-docker-action
         with:
           playbookName:     .ansible/deploy.yml
           inventoryFile:    .ansible/inventory.yml
