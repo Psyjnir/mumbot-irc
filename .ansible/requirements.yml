@@ -1,0 +1,4 @@
+---
+# from galaxy
+- src: community.docker.docker_network
+- src: community.docker.docker_container

@@ -1,0 +1,97 @@
+---
+    
+- name: Run mumbot stack
+  gather_facts: true
+  hosts: prod
+  vars:
+    mumbot_image: theta142/mumbot:0.1.0
+    redis_image: redis:alpine
+    network_name: mumbot_network
+    # Test
+    mumbot_name: "mumbotest"
+    irc_channels: "#asdfasd"
+    
+    # Secrets
+    HUBOT_IRC_PASSWORD: "{{ lookup('env', 'HUBOT_IRC_PASSWORD') }}"
+    HUBOT_DISCORDER_GUILD: "{{ lookup('env', 'HUBOT_DISCORDER_GUILD') }}"
+    HUBOT_DISCORDER_TOKEN: "{{ lookup('env', 'HUBOT_DISCORDER_TOKEN') }}"
+    HUBOT_GIPHY_API_KEY: "{{ lookup('env', 'HUBOT_GIPHY_API_KEY') }}"
+    HUBOT_GOOGLE_CSE_ID: "{{ lookup('env', 'HUBOT_GOOGLE_CSE_ID') }}"
+    HUBOT_GOOGLE_CSE_KEY: "{{ lookup('env', 'HUBOT_GOOGLE_CSE_KEY') }}"
+  
+  tasks:
+    ### Configure network
+    - name: Set up network
+      community.docker.docker_network:
+        name: "mumbot_network"
+      become: yes
+      
+    ### Configure Containers
+    ##### Mumbot  
+    - name: Configure Mumbot Container
+      become: yes
+      community.docker.docker_container:
+        name: mumbot
+        image: "{{ mumbot_image }}"
+        state: started
+        restart_policy: unless-stopped
+        container_default_behavior: compatibility
+        env:
+          HUBOT_LOG_LEVEL: info
+          REDIS_URL: redis://mumbrain:6379
+          # Secrets
+          HUBOT_IRC_PASSWORD: "{{ HUBOT_IRC_PASSWORD }}"
+          HUBOT_DISCORDER_GUILD: "{{ HUBOT_DISCORDER_GUILD }}"
+          HUBOT_DISCORDER_TOKEN: "{{ HUBOT_DISCORDER_TOKEN }}"
+          HUBOT_GIPHY_API_KEY: "{{ HUBOT_GIPHY_API_KEY }}"
+          HUBOT_GOOGLE_CSE_ID: "{{ HUBOT_GOOGLE_CSE_ID }}"
+          HUBOT_GOOGLE_CSE_KEY: "{{ HUBOT_GOOGLE_CSE_KEY }}"
+          # IRC
+          HUBOT_IRC_CONNECT_COMMAND: METADATA * SET avatar https://usercontent.irccloud-cdn.com/avatar/s128/EJv1D1nM
+          HUBOT_IRC_NICK: "{{ mumbot_name | default('mumbot') }}"
+          HUBOT_IRC_PORT: "6697"
+          HUBOT_IRC_REALNAME: Benevolent Robot Overlord
+          HUBOT_IRC_ROOMS: "{{ irc_channels | default('#psynjir') }}"
+          HUBOT_IRC_SERVER: team-irc.irccloud.com
+          HUBOT_IRC_UNFLOOD: "true"
+          HUBOT_IRC_USESSL: "true"
+          # Markov
+          HUBOT_MARKOV_LEARN_MIN: "2"
+          # Discord
+          HUBOT_DISCORDER_ANNOUNCE_ROOMS: "#psyjnir"
+          HUBOT_DISCORDER_NICK: mumbot
+          HUBOT_DISCORDER_SHOULD_ANNOUNCE_ROOM_CHANGES: "true"
+          # Other plugins
+          HUBOT_HTTP_INFO_IGNORE_DESC: "true"
+          HUBOT_HTTP_INFO_IGNORE_URLS: (imgur|gfycat|facebook)
+        log_driver: json-file
+        log_options:
+          max-file: "5"
+          max-size: "10m"
+        network_mode: "{{ network_name }}"
+
+    ##### Redis
+    - name: Create Redis named volume
+      become: yes
+      community.general.docker_volume:
+        name: redis_data
+          
+    - name: Configure Redis Container
+      become: yes
+      community.docker.docker_container:
+        name: mumbrain
+        image: "{{ redis_image }}"
+        state: started
+        restart_policy: unless-stopped
+        container_default_behavior: compatibility
+        env:
+          PGID: "1000"
+          PUID: "1000"
+        volumes:
+          - redis_data:/data
+        log_driver: json-file
+        log_options:
+          max-file: "5"
+          max-size: "10m"
+        network_mode: "{{ network_name }}"
+
