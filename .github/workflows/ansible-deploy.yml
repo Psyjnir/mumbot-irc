@@ -16,7 +16,7 @@ jobs:
 
       - uses: saubermacherag/ansible-playbook-docker-action@v1.4
         with:
-          playbookName:     deploy.yml
+          playbookName:     .ansible/deploy.yml
           inventoryFile:    .ansible/inventory.yml
           requirementsFile: .ansible/requirements.yml
           keyFile:          .ansible/id_mumbot.pem
