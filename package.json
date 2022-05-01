@@ -1,44 +1,15 @@
 {
-  "name": "mumbot-irc",
-  "version": "2.7.3",
-  "author": "Psyjnir, Inc.",
-  "keywords": [
-    "github",
-    "hubot",
-    "irc",
-    "psyjnir",
-    "bot"
-  ],
-  "description": "An IRC and Mumble Hubot",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/github/hubot/raw/master/LICENSE"
-    }
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/cbpowell/mumbot-irc.git"
-  },
   "dependencies": {
     "github": "^0.2.4",
-    "hubot": "^3.3.2",
     "hubot-diagnostics": "^1.0.0",
-    "hubot-discorder": "git://github.com/cbpowell/hubot-discorder.git#0.2.0",
+    "hubot-discorder": "github:cbpowell/hubot-discorder#0.2.0",
     "hubot-google-images": "^0.2.7",
-    "hubot-google-translate": "^0.2.1",
-    "hubot-help": "^1.0.1",
     "hubot-irc": "^0.4.0",
     "hubot-markov": "https://github.com/cbpowell/hubot-markov/tarball/master",
     "hubot-redis-brain": "^1.0.0",
-    "hubot-tell": "^1.2.4",
     "hubot-rules": "^1.0.0",
     "hubot-scripts": "^2.17.2",
     "hubot-shipit": "^0.2.1",
     "request": "2.88.0"
-  },
-  "engines": {
-      "node": "^16.6.0",
-      "npm": "> 2.0.0"
   }
 }

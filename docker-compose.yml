@@ -1,0 +1,73 @@
+version: "3.7"
+
+volumes:
+  redis_data:
+    external: false
+
+services:
+## Mumbot (a Hubot)
+  mumbot:
+    image: theta142/hubot-docker:latest
+    container_name: "mumbot"
+    restart: always
+    volumes:
+      - ./scripts:/home/hubot/scripts
+      - ./package.json:/home/hubot/package.json
+      - ./external-scripts.json:/home/hubot/external-scripts.json:ro
+      - ./hubot-scripts.json:/home/hubot/hubot-scripts.json:ro
+    environment:
+      TZ: 'America/Phoenix'
+      # Hubot
+      HUBOT_LOG_LEVEL: info
+      EXTRA_PACKAGES: hubot-diagnostics
+      REDIS_URL: redis://mumbrain:6379
+      # Secrets
+      HUBOT_IRC_PASSWORD: ${HUBOT_IRC_PASSWORD}
+      HUBOT_DISCORDER_GUILD: ${HUBOT_DISCORDER_GUILD}
+      HUBOT_DISCORDER_TOKEN: ${HUBOT_DISCORDER_TOKEN}
+      HUBOT_GIPHY_API_KEY: ${HUBOT_GIPHY_API_KEY}
+      HUBOT_GOOGLE_CSE_ID: ${HUBOT_GOOGLE_CSE_ID}
+      HUBOT_GOOGLE_CSE_KEY: ${HUBOT_GOOGLE_CSE_KEY}
+      # IRC
+      HUBOT_IRC_CONNECT_COMMAND: METADATA * SET avatar https://usercontent.irccloud-cdn.com/avatar/s128/EJv1D1nM
+      HUBOT_IRC_NICK: mumbot-testing
+      HUBOT_IRC_PORT: 6697
+      HUBOT_IRC_REALNAME: Benevolent Robot Overlord
+      HUBOT_IRC_ROOMS: "#asdfasd"
+      HUBOT_IRC_SERVER: team-irc.irccloud.com
+      HUBOT_IRC_UNFLOOD: "true"
+      HUBOT_IRC_USESSL: "true"
+      # Markov
+      HUBOT_MARKOV_LEARN_MIN: 2
+      # Discord
+      HUBOT_DISCORDER_ANNOUNCE_ROOMS: "#psyjnir"
+      HUBOT_DISCORDER_NICK: mumbot
+      HUBOT_DISCORDER_SHOULD_ANNOUNCE_ROOM_CHANGES: "true"
+      # Other plugins
+      HUBOT_HTTP_INFO_IGNORE_DESC: "true"
+      HUBOT_HTTP_INFO_IGNORE_URLS: (imgur|gfycat|facebook)
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+## Redis
+# The redis brain for mumbot
+  mumbrain:
+    container_name: mumbrain
+    image: redis:alpine
+    command:
+      - --save 60 1
+    restart: always
+    volumes:
+      - redis_data:/data
+    environment:
+      - PGID=1000
+      - PUID=1000
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+  

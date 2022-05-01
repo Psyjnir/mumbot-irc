@@ -1,0 +1,24 @@
+name: ansible-deploy
+
+on:
+  # Triggers the workflow on push events but only for the master branch
+  push:
+    branches: [ master ]
+    
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: saubermacherag/ansible-playbook-docker-action@v1.4
+        with:
+          playbookName:     deploy.yml
+          inventoryFile:    .ansible/inventory.yml
+          requirementsFile: .ansible/requirements.yml
+          keyFile:          .ansible/id_mumbot.pem
+          keyFileVaultPass: ${{ secrets.KEYFILE_VAULT_PASS }}
+          #verbosity: "vv"

@@ -1,0 +1,21 @@
+all:
+  hosts:
+    localhost:
+      ansible_connection: local
+      ansible_python_interpreter: /usr/local/bin/python3
+    remote:
+      ansible_host: "{{ lookup('env', 'MUMBOT_SERVER_IP') }}"
+      ansible_port: "{{ lookup('env', 'MUMBOT_SERVER_PORT') }}"
+      ansible_user: "{{ lookup('env', 'MUMBOT_SERVER_USER') }}"
+      ansible_become_pass: "{{ lookup('env', 'MUMBOT_SERVER_BECOME_PASS') }}"
+      ansible_python_interpreter: /usr/bin/python3
+  children:
+    prod:
+      hosts:
+        remote:
+    test:
+      hosts:
+        remote:
+    local:
+      hosts:
+        localhost:
