@@ -1,3 +1,4 @@
 ---
 # from galaxy
-- src: community.docker
+collections:
+- community.docker
