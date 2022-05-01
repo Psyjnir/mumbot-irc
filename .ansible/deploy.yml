@@ -1,12 +1,15 @@
 ---
     
 - name: Run mumbot stack
-  gather_facts: true
+  gather_facts: false
   hosts: prod
   vars:
+    # Base
+    ansible_host_key_checking: false
     mumbot_image: theta142/mumbot:0.1.0
     redis_image: redis:alpine
     network_name: mumbot_network
+    
     # Test
     mumbot_name: "mumbotest"
     irc_channels: "#asdfasd"
@@ -24,12 +27,10 @@
     - name: Set up network
       community.docker.docker_network:
         name: "mumbot_network"
-      become: yes
       
     ### Configure Containers
     ##### Mumbot  
     - name: Configure Mumbot Container
-      become: yes
       community.docker.docker_container:
         name: mumbot
         image: "{{ mumbot_image }}"
@@ -72,12 +73,10 @@
 
     ##### Redis
     - name: Create Redis named volume
-      become: yes
       community.general.docker_volume:
         name: redis_data
           
     - name: Configure Redis Container
-      become: yes
       community.docker.docker_container:
         name: mumbrain
         image: "{{ redis_image }}"

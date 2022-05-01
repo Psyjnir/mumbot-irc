@@ -14,11 +14,24 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: cbpowell/ansible-playbook-docker-action@4a14671b933915dac954cb4453bf5d2707fa8c43
+      - uses: cbpowell/ansible-playbook-docker-action@4cc39a556f40415632037a578b88dc57fbab7101
+        env:
+          # Host
+          MUMBOT_SERVER_IP: ${{ secrets.MUMBOT_SERVER_IP }}
+          MUMBOT_SERVER_PORT: ${{ secrets.MUMBOT_SERVER_PORT }}
+          MUMBOT_SERVER_USER: ${{ secrets.MUMBOT_SERVER_USER }}
+          MUMBOT_SERVER_BECOME_PASS: ${{ secrets.MUMBOT_SERVER_BECOME_PASS }}
+          # Config
+          HUBOT_IRC_PASSWORD: ${{ secrets.HUBOT_IRC_PASSWORD }}
+          HUBOT_DISCORDER_GUILD: ${{ secrets.HUBOT_DISCORDER_GUILD }}
+          HUBOT_DISCORDER_TOKEN: ${{ secrets.HUBOT_DISCORDER_TOKEN }}
+          HUBOT_GIPHY_API_KEY: ${{ secrets.HUBOT_GIPHY_API_KEY }}
+          HUBOT_GOOGLE_CSE_ID: ${{ secrets.HUBOT_GOOGLE_CSE_ID }}
+          HUBOT_GOOGLE_CSE_KEY: ${{ secrets.HUBOT_GOOGLE_CSE_KEY }}
         with:
           playbookName:     .ansible/deploy.yml
           inventoryFile:    .ansible/inventory.yml
           requirementsFile: .ansible/requirements.yml
           keyFile:          .ansible/id_mumbot.pem
-          keyFileVaultPass: ${{ secrets.KEYFILE_VAULT_PASS }}
-          #verbosity: "vv"
+          vaultPass:        ${{ secrets.KEYFILE_VAULT_PASS }}
+          # verbosity: "vvv"
