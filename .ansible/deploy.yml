@@ -2,7 +2,7 @@
     
 - name: Run mumbot stack
   gather_facts: false
-  hosts: prod
+  hosts: all
   vars:
     # Base
     ansible_host_key_checking: false
@@ -36,6 +36,10 @@
         restart_policy: unless-stopped
         container_default_behavior: compatibility
         env:
+          # Deployment
+          GIT_REV: "{{ lookup('env', 'GITHUB_SHA') | default() }}"
+          GITHUB_STATUS_TOKEN: "{{ lookup('env', 'GH_COMMIT_STATUS_TOKEN') | default() }}"
+          # Config
           HUBOT_LOG_LEVEL: info
           REDIS_URL: redis://mumbrain:6379
           # Secrets

@@ -15,8 +15,6 @@
 GitHubAPI = require 'github'
 
 module.exports = (robot) ->
-  # Depends on the below Dokku plugin, or similar, to get GIT_REV env var
-  # https://github.com/cjblomqvist/dokku-git-rev
   development = process.env.GIT_REV
   
   robot.hear /(git hash$)/i, (msg) ->
@@ -41,7 +39,7 @@ module.exports = (robot) ->
         type: 'oauth'
         token: process.env.GITHUB_STATUS_TOKEN
     
-      github.statuses.create { user:'Psyjnir', repo:'mumbot-irc', sha:development, state:'success', context:'Mumbot-test', description:'Mumbot-test up and running'}, (err, res) ->
+      github.statuses.create { user:'Psyjnir', repo:'mumbot-irc', sha:development, state:'success', context:'Mumbotest', description:'Mumbotest up and running'}, (err, res) ->
         if not err
           robot.logger.debug "Successfull deployment"
           robot.brain.set 'deployed', true
