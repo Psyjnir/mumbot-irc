@@ -58,7 +58,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - uses: cbpowell/ansible-playbook-docker-action@4cc39a556f40415632037a578b88dc57fbab7101
+      - uses: cbpowell/ansible-playbook-docker-action@v1.5
         env:
           # Config
           HUBOT_IRC_PASSWORD: ${{ secrets.HUBOT_IRC_PASSWORD }}
