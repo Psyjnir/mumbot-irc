@@ -27,6 +27,7 @@ jobs:
           playbookName:     .ansible/deploy.yml
           inventoryFile:    .ansible/inventory.yml
           requirementsFile: .ansible/requirements.yml
+          extraFile:        .ansible/test_vars.yml
           keyFile:          .ansible/id_mumbot.pem
           vaultPass:        ${{ secrets.KEYFILE_VAULT_PASS }}
           # verbosity: "vvv"
