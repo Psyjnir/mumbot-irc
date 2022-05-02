@@ -10,7 +10,6 @@ on:
 
 jobs:
   change-check:
-    needs: build
     runs-on: ubuntu-latest
     outputs:
       change-status: ${{ steps.changes.outputs.image }}
