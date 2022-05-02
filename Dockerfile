@@ -10,8 +10,6 @@ COPY --chown=hubot:hubot hubot-scripts.json ./
 
 RUN npm install --save
 
-#RUN chown -R hubot:hubot ./
-
 USER hubot
 
 CMD bin/hubot --name mumbot --adapter irc
