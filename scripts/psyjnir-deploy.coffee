@@ -12,7 +12,7 @@
 #     Github: https://github.com/cbpowell
 #
 
-GitHubAPI = require 'github'
+GitHubAPI = require '@octokit/rest'
 
 module.exports = (robot) ->
   development = process.env.GIT_REV
@@ -34,12 +34,19 @@ module.exports = (robot) ->
         return
         
       robot.logger.debug "Attempting to set deployment with hash #{development}"
-      github = new GitHubAPI(version: '3.0.0')
-      github.authenticate
-        type: 'oauth'
-        token: process.env.GITHUB_STATUS_TOKEN
-    
-      github.statuses.create { user:'Psyjnir', repo:'mumbot-irc', sha:development, state:'success', context:'Mumbotest', description:'Mumbotest up and running'}, (err, res) ->
+      github = new GitHubAPI({
+        auth: process.env.GITHUB_STATUS_TOKEN
+      })
+      
+      github.request('POST /repos/{owner}/{repo}/statues/{sha}', {
+        owner: 'Psyjnir',
+        repo: 'mumbot-irc',
+        sha: development,
+        state: 'success',
+        context: 'Mumbotest',
+        description: 'Mumbotest build succeeded!'
+      }), (res, error) ->
+        # github.statuses.create { user:'Psyjnir', repo:'mumbot-irc', sha:development, state:'success', context:'Mumbotest', description:'Mumbotest up and running'}, (err, res) ->
         if not err
           robot.logger.debug "Successfull deployment"
           robot.brain.set 'deployed', true

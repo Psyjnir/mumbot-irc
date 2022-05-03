@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "github": "^0.2.4",
+    "@octokit/rest": "^18.0.0",
     "hubot-diagnostics": "^1.0.0",
     "hubot-discorder": "github:cbpowell/hubot-discorder#0.2.0",
     "hubot-google-images": "^0.2.7",
