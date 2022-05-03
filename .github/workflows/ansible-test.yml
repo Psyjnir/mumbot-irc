@@ -10,6 +10,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       # Rebuild Mumbot image
       - name: Set up Docker Buildx
@@ -24,12 +25,15 @@ jobs:
       # Not sure if needed  
       - uses: actions/checkout@v3
       
+      - name: Install Ansible on runner
+        run: |
+          sudo apt-get install -y ansible
+      
       - name: Install necessary Python packages on runner
         run: |
-          pip3 install requests
           pip3 install docker
-      
-      - uses: cbpowell/ansible-playbook-docker-action@v1.5
+          
+      - name: Run test deployment playbook on localhost
         env:
           # Config
           GH_COMMIT_STATUS_TOKEN: ${{ secrets. GH_COMMIT_STATUS_TOKEN }}
@@ -39,11 +43,29 @@ jobs:
           HUBOT_GIPHY_API_KEY: ${{ secrets.HUBOT_GIPHY_API_KEY }}
           HUBOT_GOOGLE_CSE_ID: ${{ secrets.HUBOT_GOOGLE_CSE_ID }}
           HUBOT_GOOGLE_CSE_KEY: ${{ secrets.HUBOT_GOOGLE_CSE_KEY }}
-        with:
-          playbookName:     .ansible/deploy.yml
-          inventoryFile:    .ansible/inventory_test.yml
-          requirementsFile: .ansible/requirements.yml
-          extraFile:        .ansible/test_vars.yml
-          keyFile:          .ansible/id_mumbot.pem
-          vaultPass:        ${{ secrets.KEYFILE_VAULT_PASS }}
+        run: |
+          ansible-galaxy install -r .ansible/requirements.yml && \
+          echo "${{ secrets.KEYFILE_VAULT_PASS }}" > .ansible/vault_key && \
+          ansible-playbook .ansible/deploy.yml \
+           -i .ansible/inventory_test.yml \
+           --extra-vars @.ansible/test_vars.yml \
+           --vault-password-file .ansible/vault_key
+           
+      # - uses: cbpowell/ansible-playbook-docker-action@v1.5
+      #   env:
+      #     # Config
+      #     GH_COMMIT_STATUS_TOKEN: ${{ secrets. GH_COMMIT_STATUS_TOKEN }}
+      #     HUBOT_IRC_PASSWORD: ${{ secrets.HUBOT_IRC_PASSWORD }}
+      #     HUBOT_DISCORDER_GUILD: ${{ secrets.HUBOT_DISCORDER_GUILD }}
+      #     HUBOT_DISCORDER_TOKEN: ${{ secrets.HUBOT_DISCORDER_TOKEN }}
+      #     HUBOT_GIPHY_API_KEY: ${{ secrets.HUBOT_GIPHY_API_KEY }}
+      #     HUBOT_GOOGLE_CSE_ID: ${{ secrets.HUBOT_GOOGLE_CSE_ID }}
+      #     HUBOT_GOOGLE_CSE_KEY: ${{ secrets.HUBOT_GOOGLE_CSE_KEY }}
+      #   with:
+      #     playbookName:     .ansible/deploy.yml
+      #     inventoryFile:    .ansible/inventory_test.yml
+      #     requirementsFile: .ansible/requirements.yml
+      #     extraFile:        .ansible/test_vars.yml
+      #     keyFile:          .ansible/id_mumbot.pem
+      #     vaultPass:        ${{ secrets.KEYFILE_VAULT_PASS }}
           # verbosity: "vvv"
