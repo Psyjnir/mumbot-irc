@@ -24,6 +24,11 @@ jobs:
       # Not sure if needed  
       - uses: actions/checkout@v3
       
+      - name: Install necessary Python packages on runner
+        run: |
+          pip3 install requests
+          pip3 install docker
+      
       - uses: cbpowell/ansible-playbook-docker-action@v1.5
         env:
           # Config
