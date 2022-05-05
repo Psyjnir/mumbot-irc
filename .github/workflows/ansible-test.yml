@@ -22,7 +22,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          push: false # Don't push PRs
+          push: false # Don't push PRs, only build locally
           tags: theta142/mumbot:latest
       
       - name: Install Ansible on runner
@@ -63,22 +63,3 @@ jobs:
            -i .ansible/inventory_test.yml \
            --extra-vars @.ansible/test_vars.yml \
            --vault-password-file .ansible/vault_key
-           
-      # - uses: cbpowell/ansible-playbook-docker-action@v1.5
-      #   env:
-      #     # Config
-      #     GH_COMMIT_STATUS_TOKEN: ${{ secrets. GH_COMMIT_STATUS_TOKEN }}
-      #     HUBOT_IRC_PASSWORD: ${{ secrets.HUBOT_IRC_PASSWORD }}
-      #     HUBOT_DISCORDER_GUILD: ${{ secrets.HUBOT_DISCORDER_GUILD }}
-      #     HUBOT_DISCORDER_TOKEN: ${{ secrets.HUBOT_DISCORDER_TOKEN }}
-      #     HUBOT_GIPHY_API_KEY: ${{ secrets.HUBOT_GIPHY_API_KEY }}
-      #     HUBOT_GOOGLE_CSE_ID: ${{ secrets.HUBOT_GOOGLE_CSE_ID }}
-      #     HUBOT_GOOGLE_CSE_KEY: ${{ secrets.HUBOT_GOOGLE_CSE_KEY }}
-      #   with:
-      #     playbookName:     .ansible/deploy.yml
-      #     inventoryFile:    .ansible/inventory_test.yml
-      #     requirementsFile: .ansible/requirements.yml
-      #     extraFile:        .ansible/test_vars.yml
-      #     keyFile:          .ansible/id_mumbot.pem
-      #     vaultPass:        ${{ secrets.KEYFILE_VAULT_PASS }}
-          # verbosity: "vvv"
