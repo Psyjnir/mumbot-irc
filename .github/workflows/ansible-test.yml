@@ -33,6 +33,19 @@ jobs:
         run: |
           pip3 install docker
           
+      - name: Set pending commit status
+        uses: octokit/request-action@v2.1.0
+        with:
+          route: POST /repos/{owner}/{repo}/statuses/{sha}
+          owner: Psyjnir
+          repo: mumbot-irc
+          description: "Mumbotest successful run"
+          context: Mumbotest
+          sha: ${{ github.sha }}
+          state: pending
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_COMMIT_STATUS_TOKEN }}
+          
       - name: Run test deployment playbook on localhost
         env:
           # Config

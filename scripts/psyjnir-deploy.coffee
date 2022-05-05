@@ -12,7 +12,7 @@
 #     Github: https://github.com/cbpowell
 #
 
-GitHubAPI = require '@octokit/rest'
+{ Octokit } = require '@octokit/rest'
 
 module.exports = (robot) ->
   development = process.env.GIT_REV
@@ -34,27 +34,27 @@ module.exports = (robot) ->
         return
         
       robot.logger.debug "Attempting to set deployment with hash #{development}"
-      github = new GitHubAPI({
+      github = new Octokit({
         auth: process.env.GITHUB_STATUS_TOKEN
       })
+      robot.logger.debug "Github authorization complete"
       
-      github.request('POST /repos/{owner}/{repo}/statues/{sha}', {
+      github.rest.repos.createCommitStatus {
         owner: 'Psyjnir',
         repo: 'mumbot-irc',
         sha: development,
         state: 'success',
         context: 'Mumbotest',
-        description: 'Mumbotest build succeeded!'
-      }), (res, error) ->
-        # github.statuses.create { user:'Psyjnir', repo:'mumbot-irc', sha:development, state:'success', context:'Mumbotest', description:'Mumbotest up and running'}, (err, res) ->
-        if not err
-          robot.logger.debug "Successfull deployment"
-          robot.brain.set 'deployed', true
-          robot.messageRoom process.env.HUBOT_IRC_ROOMS, "Deploy complete! Github notified."
-        else
-          errorMsg = JSON.stringify(err)
-          robot.logger.debug "Deploy failed with error: #{errorMsg}"
-          robot.messageRoom process.env.HUBOT_IRC_ROOMS, "Deploy uncertain. Response: " + errorMsg
+        description: 'Mumbotest build succeeded!'},
+        (res, err) =>
+          if not err
+            robot.logger.debug "Successfull deployment"
+            #robot.brain.set 'deployed', true
+            robot.messageRoom process.env.HUBOT_IRC_ROOMS, "Deploy complete! Github notified."
+          else
+            errorMsg = JSON.stringify(err)
+            robot.logger.debug "Deploy failed with error: #{errorMsg}"
+            robot.messageRoom process.env.HUBOT_IRC_ROOMS, "Deploy uncertain. Response: " + errorMsg
           
       if process.env.TEST_TIMEOUT
         # Shut down after specified time
