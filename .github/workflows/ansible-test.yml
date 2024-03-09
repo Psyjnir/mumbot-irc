@@ -1,8 +1,8 @@
 name: ansible-test
 
 on:
-  pull_request:
-    types: [ opened, synchronize ]
+  # pull_request:
+  #   types:[ opened, synchronize ]
     
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
