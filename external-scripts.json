@@ -1,9 +1,6 @@
 [
     "hubot-markov",
     "hubot-discorder",
-    "hubot-google-images",
     "hubot-diagnostics",
-    "hubot-redis-brain",
-    "hubot-shipit",
-    "hubot-rules"
+    "hubot-redis-brain"
 ]
