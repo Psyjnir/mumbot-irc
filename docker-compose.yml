@@ -63,7 +63,7 @@ services:
 # The redis brain for mumbot
   mumbrain:
     container_name: mumbrain
-    image: redis:alpine
+    image: redis:6.2-alpine
     command:
       - --save 60 1
     restart: always
