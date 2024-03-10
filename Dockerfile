@@ -1,4 +1,4 @@
-FROM theta142/hubot-docker:latest
+FROM --platform=linux/amd64 theta142/hubot-docker:latest
 
 ADD --chown=hubot:hubot scripts ./scripts
 COPY --chown=hubot:hubot extra-packages.json ./
