@@ -65,10 +65,14 @@ services:
     container_name: mumbrain
     image: redis:6.2-alpine
     command:
-      - --save 60 1
+      - redis-server
+      - /usr/local/etc/redis/redis.conf
     restart: always
     volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf:ro
       - redis_data:/data
+      # For restoring
+      # - ./dump.rdb:/opt/dump.rdb
     environment:
       - PGID=1000
       - PUID=1000
