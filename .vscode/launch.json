@@ -1,0 +1,31 @@
+{
+    "configurations": [
+        {
+            "name": "Attach",
+            "port": 9229,
+            "request": "attach",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "name": "Docker Node.js Launch",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run: debug",
+            "platform": "node"
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Attach to Docker Container",
+            "port": 9229,
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "/home/hubot/hubot"
+        }
+    ]
+}
