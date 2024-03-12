@@ -65,6 +65,14 @@ module.exports = function(robot) {
         messages: [{"role": "system", "content": intro},
             {"role": "user", "content": query}],
         model: "gpt-3.5-turbo",
+      }).catch((err) => {
+        if (err instanceof OpenAI.APIError) {
+          console.log(err.status); // 400
+          console.log(err.name); // BadRequestError
+          console.log(err.headers); // {server: 'nginx', ...}
+          robot.messageRoom(room,"Can't help you with that today, loser");
+          return;
+        }
       });
 
       robot.messageRoom(room,completion.choices[0].message.content);
