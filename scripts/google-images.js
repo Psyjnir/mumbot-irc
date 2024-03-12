@@ -25,13 +25,13 @@ module.exports = function(robot) {
 
   robot.respond(/(image|img)( me)? (.+)/i, msg => imageMe(msg, msg.match[3], url => msg.send(url)));
 
-  robot.respond(/animate( me)? (.+)/i, msg => imageMe(msg, msg.match[2], true, url => msg.send(url)));
+  robot.respond(/(gif|animate)( me)? (.+)/i, msg => imageMe(msg, msg.match[2], true, url => msg.send(url)));
 
   // pro feature, not added to docs since you can't conditionally document commands
   if (process.env.HUBOT_GOOGLE_IMAGES_HEAR != null) {
     robot.hear(/^(image|img) me (.+)/i, msg => imageMe(msg, msg.match[2], url => msg.send(url)));
 
-    robot.hear(/^animate me (.+)/i, msg => imageMe(msg, msg.match[1], true, url => msg.send(url)));
+    robot.hear(/^(gif|animate) me (.+)/i, msg => imageMe(msg, msg.match[1], true, url => msg.send(url)));
   }
 
   return robot.respond(/(?:mo?u)?sta(?:s|c)h(?:e|ify)?(?: me)? (.+)/i, function(msg) {
