@@ -47,8 +47,6 @@ module.exports = function(robot) {
     // be called again but the message type will be CatchAllMessage
     // which doesn't have a `match` method.
     if(!(Object.hasOwn(message,'message') && Object.hasOwn(message.message, 'text'))) {
-      console.log('Not a text message');
-      console.log(JSON.stringify(message));
       return false
     }
     const userInput = message.message.text;
