@@ -23,25 +23,54 @@
 //     Twitter: https://twitter.com/Psyrixx
 //     Website: https://psyjnir.com/
 
+const OpenAI = require('openai');
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_KEY,
+});
+
 module.exports = function(robot) {
   // Testing UserListing to see if I can write a .ping command (like a broadcast)
   // robot.respond /(broadcast)/, (msg) ->
   //   robot.adapter.command('names')
 
-  // Respond to questions.
-  robot.respond(/(will|can|are|would|could) you (.*)/i, function(msg) {
-    const responses = ['Yes!', 'Wat', 'Of course!', 'Maybe...send pix', 'A thousand times, yes!', 'You know our motto!', 'Get away from me.', 'Uh no', 'NEVER', 'Wow so brave', 'I blame Djof', 'I blame babu', 'They always do', 'Your light is not enough, Guardian', 'I\'ve awoken the Hive!', 'I don\'t have time to explain why I don\'t have time to explain.'];
-
-    return msg.send(msg.random(responses));
-  });
-    
   // Respond to "remember when"
   robot.hear(/(^)remember when(\z|\W|$)/i, function(msg) {
     const responses = ['No', 'That has never happened', 'Who are you, Hobbyte?', 'I remember when you could call a magazine a clip', 'I remember when Sepiks Prime cast a great shadow over our city', 'Remember when you used to play games with us?'];
     
     return msg.send(msg.random(responses));
   });
+  
+  robot.catchAll(async function (message) {
+    // Check that message is a TextMessage type because
+    // if there is no match, this matcher function will 
+    // be called again but the message type will be CatchAllMessage
+    // which doesn't have a `match` method.
+    if(!(Object.hasOwn(message,'message') && Object.hasOwn(message.message, 'text'))) {
+      console.log('Not a text message');
+      console.log(JSON.stringify(message));
+      return false
+    }
+    const userInput = message.message.text;
+    const match = userInput.match(RegExp('^mumbot (.*)'));
+    if (match.length > 1) {
+      const room = message.message.room;
+      const user = message.user.name;
+      const userId = message.user.userId;
+      const query = match[1];
 
+      const intro = 'You are being asked this by ' + user + ', in the IRC channel ' + room + '. You are a helpful assistant named mumbot. You are a benevolent robot overlord, but are snarky. You can only interact with a group of friends via an IRC chat room. The group of friends are called Psyjnir. You respond informally, and usually tersely. At you will casually mention the chat room #rc13 very, very infrequently.';
+
+      const completion = await openai.chat.completions.create({
+        messages: [{"role": "system", "content": intro},
+            {"role": "user", "content": query}],
+        model: "gpt-3.5-turbo",
+      });
+
+      robot.messageRoom(room,completion.choices[0].message.content);
+    }
+  });
+  
   // Respond to "mumbot: nuke <person>" by various nuke launch descriptions
   robot.respond(/nuke\s(\w+\b)/i, function(msg) {
     const targetUser = msg.match[1];

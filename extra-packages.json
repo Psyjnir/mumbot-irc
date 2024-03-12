@@ -1,5 +1,6 @@
 [
   "hubot-diagnostics",
   "https://github.com/cbpowell/hubot-markov/tarball/master",
-  "https://github.com/cbpowell/hubot-discorder/tarball/master"
+  "https://github.com/cbpowell/hubot-discorder/tarball/master",
+  "openai"
 ]

@@ -35,6 +35,7 @@ services:
       HUBOT_DISCORDER_TOKEN: ${HUBOT_DISCORDER_TOKEN}
       HUBOT_GOOGLE_CSE_ID: ${HUBOT_GOOGLE_CSE_ID}
       HUBOT_GOOGLE_CSE_KEY: ${HUBOT_GOOGLE_CSE_KEY}
+      OPENAI_KEY: ${OPENAI_KEY}
       # IRC
       HUBOT_IRC_CONNECT_COMMAND: METADATA * SET avatar https://usercontent.irccloud-cdn.com/avatar/s128/EJv1D1nM
       HUBOT_IRC_NICK: mumbotest
