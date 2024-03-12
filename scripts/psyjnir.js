@@ -53,7 +53,7 @@ module.exports = function(robot) {
     }
     const userInput = message.message.text;
     const match = userInput.match(RegExp('^mumbot (.*)'));
-    if (match.length > 1) {
+    if (!(match == null) && (match.length > 1)) {
       const room = message.message.room;
       const user = message.user.name;
       const userId = message.user.userId;
