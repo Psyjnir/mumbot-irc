@@ -55,7 +55,7 @@ module.exports = function(robot) {
       const room = message.message.room;
       const user = message.user.name;
       const userId = message.user.userId;
-      const query = match[1];
+      const query = match[2];
 
       let aiMessages = [
         {"role": "system", "content": 'You are being asked this by ' + user + ', in the IRC channel ' + room + '.'},
