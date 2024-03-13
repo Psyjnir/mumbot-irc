@@ -194,7 +194,9 @@ function addToCircularBuffer(client, user, messageRole, message) {
     let reply = client.get(BUFFER_KEY);
     let buffer = reply ? JSON.parse(reply) : [];
     buffer.push({"role": messageRole, "content": message, "timestamp": timestamp});
-    buffer = buffer.slice(1, BUFFER_SIZE+1); 
+    if (buffer.length > BUFFER_SIZE) {
+      buffer = buffer.slice(buffer.length - BUFFER_SIZE);
+    }
     client.set(BUFFER_KEY, JSON.stringify(buffer));
     return buffer
 }
