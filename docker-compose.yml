@@ -7,21 +7,21 @@ volumes:
 services:
 ## Mumbot (a Hubot)
   mumbot:
-    #image: theta142/mumbot:1.0.0
+    # In the future image: theta142/mumbot:1.0.0
     image: theta142/hubot-docker:latest
     container_name: "mumbot"
     restart: always
     # For debugging
-    # tty: true
-    # command: "./debug_entry.sh"
-    # ports:
-    #  - 9229:9229
+    command: "./debug_entry.sh"
+    ports:
+     - 9229:9229
     volumes:
+      # Normal volumes
       - ./extra-packages.json:/home/hubot/hubot/extra-packages.json:ro
       - ./external-scripts.json:/home/hubot/hubot/external-scripts.json:ro
       - ./scripts:/home/hubot/hubot/scripts:ro
       # For debugging 
-      # - ./node_modules:/home/hubot/hubot/node_modules
+      - ./node_modules:/home/hubot/hubot/node_modules
     environment:
       TZ: 'America/Phoenix'
       # Hubot
@@ -71,7 +71,7 @@ services:
     restart: always
     # For debugging
     # ports:
-      # - 6379:6379
+    #   - 6379:6379
     volumes:
       - redis_data:/data
       # For restoring

@@ -29,13 +29,13 @@ const BUFFER_SIZE = 8; // Memory reply
 
 module.exports = function(robot) {
 
-  robot.hear(/^\/resetme$'/i, function(msg) {
+  robot.hear(/(^|\W)resetme(\W|$)/i, function(msg) {
     // Reset memory of user's conversations
-    username = message.user.user.name;
+    username = msg.envelope.user.name;
     clearCircularBuffer(robot.brain, username)
-    return msg.send(username + "I've cleared your conversation history");
+    return msg.send(username + ": Ok, I've cleared your conversation history");
   });
-  
+
   robot.catchAll(async function (message) {
     // Check that message is a TextMessage type because
     // if there is no match, this matcher function will 
