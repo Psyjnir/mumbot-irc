@@ -1,0 +1,7 @@
+export HUBOT_IRC_PASSWORD='your_server_password'
+export HUBOT_DISCORDER_GUILD='1234512345'
+export HUBOT_DISCORDER_TOKEN='discord_api_token'
+export HUBOT_GIPHY_API_KEY='abcd12345'
+export HUBOT_GOOGLE_CSE_ID='abcd12345'
+export HUBOT_GOOGLE_CSE_KEY='abcd12345'
+export OPENAI_KEY='abcd12345'
