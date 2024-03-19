@@ -26,6 +26,7 @@ const openai = new OpenAI({
 });
 
 const OPENAI_MODEL = 'gpt-3.5-turbo';
+const OPENAI_MAXTOKENS = 200;
 const BOT_MEMORY = 30 * 60 * 1000; // 30 minutes
 const BUFFER_SIZE = 10; // Memory of promps & replies
 const MAX_PERSIST_PROMPT = 150; // Char limit for persistent prompts
@@ -88,6 +89,10 @@ module.exports = function(robot) {
       aiMessages.push(...buffer);
       aiMessages.push({"role":"system", "content": query});
 
+      // Temp hack to keep spam down
+      if (room == '#psyjnir' || room == '#asdfasd') {
+        aiMessages.push({"role": "system", "content": "Your replies must be no longer than 150 characters, without carriage returns."});
+      }
       const completion = await openai.chat.completions.create({
         messages: aiMessages,
         model: OPENAI_MODEL,
