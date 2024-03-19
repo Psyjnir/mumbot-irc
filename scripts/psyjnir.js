@@ -114,15 +114,6 @@ module.exports = function(robot) {
   //shrug emote
   robot.hear(/(^shrug$|^i dunno$|^dunno$|^idk$)/i, msg => msg.send("¯\\_(ツ)_/¯"));
 	
-  //dis gon b gud
-  robot.hear(/^dis g[o|u]ne? be? g(u|oo)d$/i, msg => msg.send("http://hobbyte.org/gud.gif"));
-	
-  //dis gon b bad
-  robot.hear(/^dis g[o|u]ne? be? bad$/i, msg => msg.send("http://hobbyte.org/bad.gif"));
-		
-  //skinnnn
-  robot.hear(/^skin{1,10}$/i, msg => msg.send("http://hobbyte.org/skinnnn.mp4"));
-			
   //nice
   return robot.hear(/69/i, msg => msg.send("nice"));
 };
