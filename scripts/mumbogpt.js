@@ -25,7 +25,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_KEY,
 });
 
-const OPENAI_MODEL = 'gpt-3.5-turbo';
+const OPENAI_MODEL = 'gpt-4o-mini';
 const OPENAI_MAXTOKENS = 200;
 const BOT_MEMORY = 30 * 60 * 1000; // 30 minutes
 const BUFFER_SIZE = 10; // Memory of promps & replies
