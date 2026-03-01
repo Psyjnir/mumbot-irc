@@ -107,6 +107,7 @@ module.exports = function(robot) {
       if (allowSearch) {
         console.log("Allowing search");
       }
+
       let response;
       try {
         response = await anthropic.messages.create({
@@ -148,7 +149,6 @@ module.exports = function(robot) {
       }
 
       // Get reply
-      console.log(response)
       const textBlock = response.content.find(block => block.type === 'text');
       const assistantReply = textBlock?.text;
       // Add to buffer
