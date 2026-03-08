@@ -116,6 +116,59 @@ module.exports = function(robot) {
 	
   //nice
   return robot.hear(/69/i, msg => msg.send("nice"));
+
+	
+	//dice roll
+	robot.hear(/^roll/i, function(msg) { 
+		
+		var getRandomInt = function(min, max) {
+		  min = Math.ceil(min);
+		  max = Math.floor(max);
+		  return Math.floor(Math.random() * (max - min + 1)) + min; // The maximum is inclusive and the minimum is inclusive 
+		}
+			
+		var dice =  msg.split(" ")[1];
+		if(dice)
+		{
+			//check 1d6 format
+			var matches = msg.match(/(\d+)d(\d+)/);
+			if(matches)
+			{
+				var numDice = matches[1];
+				var diceSize = matches[2];
+
+				var sum = 0;
+
+				for(var i = 0; i < numDice; i++)
+				{
+					sum += getRandomInt(1,diceSize);
+				}
+
+				return msg.Send(sum.toString());
+			}
+
+			//check for x-y format
+			matches = msg.match(/(\d+)[-](\d+)/);
+			if(matches)
+			{
+				var min = matches[1];
+				var max = matches[2];
+
+				return msg.Send(getRandomInt(min,max).toString());
+			}
+
+			//check for 1-x format
+			matches = msg.match(/(\d+)/);
+			if(matches)
+			{
+				var max = matches[1];
+
+				return msg.Send(getRandomInt(1,max).toString());
+			}
+				
+		}
+		return null;
+  });
 };
 
 	
