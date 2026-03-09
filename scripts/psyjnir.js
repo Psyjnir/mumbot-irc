@@ -137,7 +137,7 @@ module.exports = function(robot) {
 			{
 				var numDice = matches[1];
 				var diceSize = matches[2];
-				if(numDice < 10000)
+				if(numDice < 1000)
 				{
 					var sum = 0;
 	
