@@ -145,8 +145,8 @@ module.exports = function(robot) {
 					{
 						sum += getRandomInt(1,diceSize);
 					}
-	
-					return msg.Send(sum.toString());
+
+					return msg.send(sum.toString());
 				}
 			}
 
