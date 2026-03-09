@@ -115,23 +115,28 @@ module.exports = function(robot) {
   robot.hear(/(^shrug$|^i dunno$|^dunno$|^idk$)/i, msg => msg.send("¯\\_(ツ)_/¯"));
 	
   //nice
-  return robot.hear(/69/i, msg => msg.send("nice"));
+  robot.hear(/69/i, msg => msg.send("nice"));
 
-	
+
 	//dice roll
-	robot.hear(/^roll/i, function(msg) { 
-		
+	robot.hear(/^roll/i, function(msg) {
+
 		var getRandomInt = function(min, max) {
 		  min = Math.ceil(min);
 		  max = Math.floor(max);
-		  return Math.floor(Math.random() * (max - min + 1)) + min; // The maximum is inclusive and the minimum is inclusive 
-		}
-			
-		var dice =  msg.split(" ")[1];
+		  return Math.floor(Math.random() * (max - min + 1)) + min; // The maximum is inclusive and the minimum is inclusive
+    }
+
+    console.log(msg);
+
+    var dice = msg.message.text.split(" ")[1];
+
+    console.log(dice);
+
 		if(dice)
 		{
 			//check 1d6 format
-			var matches = msg.match(/(\d+)d(\d+)/);
+			var matches = dice.match(/(\d+)d(\d+)/);
 			if(matches)
 			{
 				var numDice = matches[1];
@@ -144,28 +149,28 @@ module.exports = function(robot) {
 					sum += getRandomInt(1,diceSize);
 				}
 
-				return msg.Send(sum.toString());
+				return msg.send(sum.toString());
 			}
 
 			//check for x-y format
-			matches = msg.match(/(\d+)[-](\d+)/);
+			matches = dice.match(/(\d+)[-](\d+)/);
 			if(matches)
 			{
 				var min = matches[1];
 				var max = matches[2];
 
-				return msg.Send(getRandomInt(min,max).toString());
+				return msg.send(getRandomInt(min,max).toString());
 			}
 
 			//check for 1-x format
-			matches = msg.match(/(\d+)/);
+			matches = dice.match(/(\d+)/);
 			if(matches)
 			{
 				var max = matches[1];
 
-				return msg.Send(getRandomInt(1,max).toString());
+				return msg.send(getRandomInt(1,max).toString());
 			}
-				
+
 		}
 		return null;
   });
