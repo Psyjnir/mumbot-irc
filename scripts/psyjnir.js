@@ -147,6 +147,8 @@ module.exports = function(robot) {
 					}
 
 					return msg.send(sum.toString());
+        } else {
+          return msg.send("Too many dice (> 999), try again");
 				}
 			}
 
