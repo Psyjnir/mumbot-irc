@@ -148,7 +148,8 @@ module.exports = function(robot) {
 
 					return msg.send(sum.toString());
         } else {
-          return msg.send("Too many dice (> 999), try again");
+          const responses = ["999 dice ought to be enough for anybody", "I only have 640 kb of ram to roll with! Pick fewer dice", "If you need more than 999, get your own", "Do you *really* need more than 999 dice?", "I'm to lazy to roll more than 999 dice", "I'm going to need a tip for more than 999 dice, thanks", "I can't count past 999 dice, sorry"];
+          return msg.send(msg.random(responses));
 				}
 			}
 
