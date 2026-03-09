@@ -137,15 +137,17 @@ module.exports = function(robot) {
 			{
 				var numDice = matches[1];
 				var diceSize = matches[2];
-
-				var sum = 0;
-
-				for(var i = 0; i < numDice; i++)
+				if(numDice < 10000)
 				{
-					sum += getRandomInt(1,diceSize);
+					var sum = 0;
+	
+					for(var i = 0; i < numDice; i++)
+					{
+						sum += getRandomInt(1,diceSize);
+					}
+	
+					return msg.Send(sum.toString());
 				}
-
-				return msg.send(sum.toString());
 			}
 
 			//check for x-y format
